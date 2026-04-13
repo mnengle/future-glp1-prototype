@@ -56,7 +56,7 @@ const medications = [
 const members = [
   {
     initial: "D",
-    name: "David K.",
+    name: "Daniel K.",
     age: "32",
     city: "Austin, TX",
     accent: "coral",
@@ -66,10 +66,8 @@ const members = [
     program: "Semaglutide + Coaching",
     quote:
       "I didn't just want to be skinny. I wanted to be strong. My coach programmed lifts around how I was feeling on the med.",
-    beforeImg:
-      "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&h=800&fit=crop",
-    afterImg:
-      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=800&fit=crop",
+    beforeImg: "/testimonials/before-1.jpg",
+    afterImg: "/testimonials/after-1.jpg",
   },
   {
     initial: "S",
@@ -83,10 +81,8 @@ const members = [
     program: "Tirzepatide + Coaching",
     quote:
       "I've done GLP-1s before and always felt weak after. This time I came out stronger than I started.",
-    beforeImg:
-      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=800&fit=crop",
-    afterImg:
-      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=800&fit=crop&sat=-30",
+    beforeImg: "/testimonials/before-2.jpg",
+    afterImg: "/testimonials/after-2.jpg",
   },
   {
     initial: "M",
@@ -100,10 +96,8 @@ const members = [
     program: "Tirzepatide + Coaching",
     quote:
       "The med killed my appetite. Coaching kept me eating enough protein. Biggest difference of my life.",
-    beforeImg:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop",
-    afterImg:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=800&fit=crop",
+    beforeImg: "/testimonials/before-3.jpg",
+    afterImg: "/testimonials/after-3.jpg",
   },
 ];
 
@@ -518,7 +512,8 @@ export default function Home() {
                 See If You Qualify
               </Link>
               <p className="text-xs text-gray-400 mt-3">
-                $149 first month, then $299/month. Cancel anytime.
+                From $179 first month. Or bundle with Future coaching for
+                $499/month flat.
               </p>
             </div>
 

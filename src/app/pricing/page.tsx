@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 
 type Medication = "semaglutide" | "tirzepatide";
 type Form = "injection" | "oral";
+type Tier = "medication" | "bundle";
 
 const PRICING = {
   semaglutide: {
@@ -18,6 +19,11 @@ const PRICING = {
     oral: { first: 279, monthly: 399 },
   },
 };
+
+// With Future coaching bundled: flat $499/mo regardless of medication.
+// Coaching alone is normally $199/mo, so bundle saves the patient money
+// on the tirzepatide path and positions Future as premium on sema.
+const BUNDLE_PRICE = { first: 299, monthly: 499 };
 
 const INCLUDES = [
   "Medication (3-month supply available)",
@@ -113,9 +119,11 @@ const FAQS = [
 export default function PricingPage() {
   const [medication, setMedication] = useState<Medication>("semaglutide");
   const [form, setForm] = useState<Form>("injection");
+  const [tier, setTier] = useState<Tier>("medication");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const price = PRICING[medication][form];
+  const medPrice = PRICING[medication][form];
+  const price = tier === "bundle" ? BUNDLE_PRICE : medPrice;
 
   return (
     <>
@@ -219,7 +227,8 @@ export default function PricingPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => setForm("injection")}
-                    className={`p-4 rounded-xl border-2 text-left transition-all ${
+                    disabled={tier === "bundle"}
+                    className={`p-4 rounded-xl border-2 text-left transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
                       form === "injection"
                         ? "border-black"
                         : "border-gray-200 hover:border-gray-300"
@@ -232,7 +241,8 @@ export default function PricingPage() {
                   </button>
                   <button
                     onClick={() => setForm("oral")}
-                    className={`p-4 rounded-xl border-2 text-left transition-all ${
+                    disabled={tier === "bundle"}
+                    className={`p-4 rounded-xl border-2 text-left transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
                       form === "oral"
                         ? "border-black"
                         : "border-gray-200 hover:border-gray-300"
@@ -241,6 +251,48 @@ export default function PricingPage() {
                     <p className="font-semibold text-sm">Oral Tablet</p>
                     <p className="text-xs text-gray-500 mt-1">
                       Daily dissolving tab
+                    </p>
+                  </button>
+                </div>
+              </div>
+
+              {/* Plan toggle */}
+              <div className="mt-6">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+                  Plan
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setTier("medication")}
+                    className={`p-4 rounded-xl border-2 text-left transition-all ${
+                      tier === "medication"
+                        ? "border-black"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <p className="font-semibold text-sm">Medication only</p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      GLP-1 + provider care
+                    </p>
+                  </button>
+                  <button
+                    onClick={() => setTier("bundle")}
+                    className={`relative p-4 rounded-xl border-2 text-left transition-all ${
+                      tier === "bundle"
+                        ? "border-black bg-black text-white"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <span className="absolute -top-2 right-3 text-[9px] font-bold uppercase tracking-wider bg-sage text-white px-2 py-0.5 rounded-full">
+                      Best Outcomes
+                    </span>
+                    <p className="font-semibold text-sm">With Coaching</p>
+                    <p
+                      className={`text-xs mt-1 ${
+                        tier === "bundle" ? "text-white/60" : "text-gray-500"
+                      }`}
+                    >
+                      GLP-1 + Future coach
                     </p>
                   </button>
                 </div>
@@ -266,14 +318,43 @@ export default function PricingPage() {
                     ${price.monthly}
                   </span>
                 </div>
-                <div className="flex items-baseline justify-between mt-2">
-                  <span className="text-xs text-gray-400">
-                    Save with 3-month supply
-                  </span>
-                  <span className="text-xs font-semibold text-sage">
-                    ${Math.round(price.monthly * 0.85)}/mo
-                  </span>
-                </div>
+                {tier === "bundle" ? (
+                  <div className="mt-4 pt-4 border-t border-gray-200 space-y-1.5">
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-xs text-gray-400">
+                        GLP-1 medication + provider
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        ${medPrice.monthly}/mo value
+                      </span>
+                    </div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-xs text-gray-400">
+                        Future coach + resistance training
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        $199/mo value
+                      </span>
+                    </div>
+                    <div className="flex items-baseline justify-between pt-1">
+                      <span className="text-xs font-semibold text-sage">
+                        You save
+                      </span>
+                      <span className="text-xs font-bold text-sage">
+                        ${medPrice.monthly + 199 - 499}/mo
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-baseline justify-between mt-2">
+                    <span className="text-xs text-gray-400">
+                      Save with 3-month supply
+                    </span>
+                    <span className="text-xs font-semibold text-sage">
+                      ${Math.round(price.monthly * 0.85)}/mo
+                    </span>
+                  </div>
+                )}
               </div>
 
               <Link

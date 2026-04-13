@@ -10,32 +10,28 @@ const TIMELINE_STEPS = [
     day: "Day 1",
     title: "Complete your 5-minute assessment",
     body: "Share your health history, current weight, goals, and any medications. Our intake asks only what a licensed physician actually needs to prescribe safely.",
-    image:
-      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-michelle-portrait.jpg",
+    image: "/timeline/step-1-assessment.jpg",
     accent: "coral",
   },
   {
-    day: "Day 1 – 2",
+    day: "Day 1 to 2",
     title: "A licensed physician reviews your file",
     body: "Your provider, licensed in your state through SteadyMD, reviews your assessment asynchronously. No video call required in most cases. If they need more info, they'll message you directly.",
-    image:
-      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-desktop-bg.jpg",
+    image: "/timeline/step-2-review.jpg",
     accent: "purple",
   },
   {
-    day: "Day 2 – 5",
+    day: "Day 2 to 5",
     title: "Your prescription is written and shipped",
-    body: "Once approved, your medication is e-prescribed to your selected pharmacy. Partner pharmacy ships direct to your door within 2-5 business days. Discreet packaging, no signature required.",
-    image:
-      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg",
+    body: "Once approved, your medication is e-prescribed to your selected pharmacy. Partner pharmacy ships direct to your door within 2 to 5 business days. Discreet packaging, no signature required.",
+    image: "/timeline/step-3-shipped.jpg",
     accent: "sage",
   },
   {
-    day: "Week 1 +",
+    day: "Week 1+",
     title: "Start your coaching program",
     body: "Claim your first month free with Future. Your coach designs a resistance training program and dials in protein targets to preserve muscle while you lose fat. Chat with them anytime, anywhere.",
-    image:
-      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/footer/pro-footer.jpg",
+    image: "/timeline/step-4-training.jpg",
     accent: "soft-blue",
   },
 ];
