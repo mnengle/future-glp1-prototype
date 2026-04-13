@@ -32,7 +32,7 @@ export default function DashboardPage() {
   const { medication, data } = useAssessmentStore();
   const medName =
     medication?.type === "semaglutide" ? "Semaglutide" : "Tirzepatide";
-  const patientName = data.patientInfo?.firstName ?? "there";
+  const patientName = data.patientInfo?.firstName;
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function DashboardPage() {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold tracking-tight">
-              Welcome back, {patientName}
+              {patientName ? `Welcome back, ${patientName}` : "Your treatment"}
             </h1>
             <p className="text-gray-500 mt-1">
               Here&apos;s your treatment overview.
@@ -66,7 +66,8 @@ export default function DashboardPage() {
               </p>
               <p className="text-lg font-bold mt-1">{medName}</p>
               <p className="text-xs text-gray-500 mt-1">
-                {medication?.dosage} — {medication?.form}
+                {medication?.dosage ?? "0.25mg"} ·{" "}
+                {medication?.form === "oral" ? "Oral tablet" : "Injection"}
               </p>
             </div>
 

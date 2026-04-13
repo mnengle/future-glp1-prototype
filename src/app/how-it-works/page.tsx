@@ -102,48 +102,32 @@ export default function HowItWorksPage() {
         {/* Interactive timeline */}
         <section className="bg-warm-gray">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-              {/* Sidebar steps */}
-              <div className="lg:col-span-2">
-                <div className="sticky top-24 space-y-3">
-                  {TIMELINE_STEPS.map((step, i) => {
-                    const isActive = i === activeStep;
-                    return (
-                      <button
-                        key={i}
-                        onClick={() => setActiveStep(i)}
-                        className={`w-full text-left p-5 rounded-2xl border transition-all ${
-                          isActive
-                            ? "bg-white border-black shadow-sm"
-                            : "bg-white/40 border-transparent hover:bg-white/70"
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <span
-                            className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
-                              isActive
-                                ? "bg-black text-white"
-                                : "bg-gray-200 text-gray-600"
-                            }`}
-                          >
-                            {step.day}
-                          </span>
-                        </div>
-                        <h3 className="font-bold mt-2">{step.title}</h3>
-                        {isActive && (
-                          <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-                            {step.body}
-                          </p>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+            {/* Tab nav */}
+            <div className="flex flex-wrap gap-2 justify-center mb-10">
+              {TIMELINE_STEPS.map((step, i) => {
+                const isActive = i === activeStep;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setActiveStep(i)}
+                    className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
+                      isActive
+                        ? "bg-black text-white"
+                        : "bg-white text-gray-500 hover:text-black border border-gray-200"
+                    }`}
+                  >
+                    <span className="opacity-60 mr-2">0{i + 1}</span>
+                    {step.day}
+                  </button>
+                );
+              })}
+            </div>
 
-              {/* Active image */}
-              <div className="lg:col-span-3">
-                <div className="sticky top-24 aspect-[4/5] rounded-2xl overflow-hidden bg-gray-200 relative">
+            {/* Active step display */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-6xl mx-auto">
+              {/* Image */}
+              <div className="lg:col-span-7 order-2 lg:order-1">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gray-200">
                   {TIMELINE_STEPS.map((step, i) => (
                     <img
                       key={i}
@@ -154,102 +138,73 @@ export default function HowItWorksPage() {
                       }`}
                     />
                   ))}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <p className="text-xs font-bold uppercase tracking-wider text-white/70">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                  <div className="absolute top-5 left-5">
+                    <span className="inline-block bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                       {TIMELINE_STEPS[activeStep].day}
-                    </p>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mt-1">
-                      {TIMELINE_STEPS[activeStep].title}
-                    </h3>
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Behind the scenes — what we actually do */}
-        <section className="bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
-                What&apos;s Actually Happening
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                The infrastructure behind your care
-              </h2>
-              <p className="text-gray-500 mt-3 text-lg">
-                We believe in transparency. Here&apos;s who does what.
-              </p>
-            </div>
+              {/* Content */}
+              <div className="lg:col-span-5 order-1 lg:order-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                  Step {activeStep + 1} of {TIMELINE_STEPS.length}
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-3 leading-tight">
+                  {TIMELINE_STEPS[activeStep].title}
+                </h2>
+                <p className="text-gray-500 mt-4 text-base leading-relaxed">
+                  {TIMELINE_STEPS[activeStep].body}
+                </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-4">
-                  <span className="text-white text-sm font-bold">F</span>
-                </div>
-                <h3 className="font-bold">Future</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                  Intake, Payment, Support
-                </p>
-                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-                  We handle the patient experience — your health assessment,
-                  medication selection, checkout, and dashboard. We do not
-                  prescribe or manufacture medication.
-                </p>
-              </div>
-              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
-                <div className="w-10 h-10 bg-purple rounded-full flex items-center justify-center mb-4">
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <div className="flex items-center gap-3 mt-8">
+                  <button
+                    onClick={() =>
+                      setActiveStep(Math.max(0, activeStep - 1))
+                    }
+                    disabled={activeStep === 0}
+                    className="w-11 h-11 rounded-full border border-gray-300 hover:border-black disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="font-bold">SteadyMD</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                  Medical Services
-                </p>
-                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-                  Licensed physicians review your assessment, determine
-                  eligibility, and write your prescription. They&apos;re
-                  licensed in your state and HIPAA compliant.
-                </p>
-              </div>
-              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
-                <div className="w-10 h-10 bg-sage rounded-full flex items-center justify-center mb-4">
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() =>
+                      setActiveStep(
+                        Math.min(TIMELINE_STEPS.length - 1, activeStep + 1)
+                      )
+                    }
+                    disabled={activeStep === TIMELINE_STEPS.length - 1}
+                    className="w-11 h-11 rounded-full bg-black text-white hover:opacity-80 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center transition-opacity"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  </svg>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
-                <h3 className="font-bold">Partner Pharmacy</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                  Compounding, Shipping
-                </p>
-                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
-                  Your provider&apos;s prescription is routed via SureScripts to
-                  our partner compounding pharmacy, which compounds,
-                  packages, and ships directly to your door.
-                </p>
               </div>
             </div>
           </div>

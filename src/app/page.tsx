@@ -77,17 +77,17 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
                 Medical Weight Loss + Coaching
               </p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
-                Lose fat,
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02]">
+                Lose the fat.
                 <br />
-                not
+                Keep the
                 <br />
                 <span className="future-gradient-text">muscle.</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/70 mt-6 max-w-lg leading-relaxed">
-                GLP-1 medications paired with expert coaching and resistance
-                training. Because the research is clear: medication alone
-                isn&apos;t enough.
+              <p className="text-lg md:text-xl text-white/70 mt-8 max-w-lg leading-relaxed">
+                Clinically proven GLP-1 medications, paired with expert coaching
+                and resistance training. Because the research is clear —
+                medication alone isn&apos;t enough.
               </p>
 
               <div className="mt-10">
@@ -235,203 +235,140 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Before/After Results */}
+        {/* Member Results — transformation stats */}
         <section className="bg-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-14">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
-                Real Results
+                Member Transformations
               </p>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Members who lost fat — and kept their muscle.
+                Fat loss without the muscle loss.
               </h2>
               <p className="text-gray-500 mt-3 text-lg">
-                Results from patients who paired Future coaching with their
-                GLP-1 medication.
+                Outcomes from members who paired Future coaching with their
+                GLP-1 medication. Lean mass measured via DEXA scan.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* Testimonial card with before/after */}
-              <div className="bg-cool-gray rounded-2xl overflow-hidden border border-gray-200/60">
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/david-before.jpg"
-                      alt="David — before"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-michelle-portrait.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      Before
-                    </span>
+              {/* Member 1 */}
+              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-12 h-12 rounded-full bg-coral/10 flex items-center justify-center">
+                    <span className="font-bold text-coral">D</span>
                   </div>
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/david-after.jpg"
-                      alt="David — after"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-michelle-portrait.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      After
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between">
+                  <div>
                     <p className="font-bold">David K.</p>
-                    <p className="text-xs text-gray-400">32, Austin TX</p>
+                    <p className="text-xs text-gray-500">32 · Austin, TX</p>
                   </div>
-                  <div className="flex gap-4 mt-3">
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Weight Lost
-                      </p>
-                      <p className="font-bold text-sage">-28 lbs</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Muscle Retained
-                      </p>
-                      <p className="font-bold text-sage">97%</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-3 italic leading-relaxed">
-                    &ldquo;I didn&apos;t just want to be skinny — I wanted to be
-                    strong. The coach programmed my lifts around how I was
-                    feeling on the med.&rdquo;
-                  </p>
                 </div>
+
+                <div className="space-y-4 flex-1">
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Weight lost</span>
+                    <span className="font-bold text-lg">-28 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Fat mass lost</span>
+                    <span className="font-bold text-lg text-sage">-27.3 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Muscle preserved</span>
+                    <span className="font-bold text-lg text-sage">97%</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3">
+                    <span className="text-sm text-gray-500">Program</span>
+                    <span className="text-sm font-medium">Semaglutide + Coaching</span>
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
+                  &ldquo;I didn&apos;t just want to be skinny — I wanted to be
+                  strong. My coach programmed lifts around how I was feeling on
+                  the med.&rdquo;
+                </p>
               </div>
 
-              {/* Testimonial 2 */}
-              <div className="bg-cool-gray rounded-2xl overflow-hidden border border-gray-200/60">
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/sarah-before.jpg"
-                      alt="Sarah — before"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://s3.amazonaws.com/assets.dev.future.fit/images/2ec2cc10-47d2-4e71-8d7a-3c66dc0af293.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      Before
-                    </span>
+              {/* Member 2 */}
+              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-12 h-12 rounded-full bg-sage/10 flex items-center justify-center">
+                    <span className="font-bold text-sage">S</span>
                   </div>
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/sarah-after.jpg"
-                      alt="Sarah — after"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://s3.amazonaws.com/assets.dev.future.fit/images/2ec2cc10-47d2-4e71-8d7a-3c66dc0af293.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      After
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between">
+                  <div>
                     <p className="font-bold">Sarah M.</p>
-                    <p className="text-xs text-gray-400">41, Chicago IL</p>
+                    <p className="text-xs text-gray-500">41 · Chicago, IL</p>
                   </div>
-                  <div className="flex gap-4 mt-3">
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Weight Lost
-                      </p>
-                      <p className="font-bold text-sage">-46 lbs</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Muscle Retained
-                      </p>
-                      <p className="font-bold text-sage">94%</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-3 italic leading-relaxed">
-                    &ldquo;I&apos;ve done GLP-1s before and always felt weak
-                    after. This time I came out stronger than I started.&rdquo;
-                  </p>
                 </div>
+
+                <div className="space-y-4 flex-1">
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Weight lost</span>
+                    <span className="font-bold text-lg">-46 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Fat mass lost</span>
+                    <span className="font-bold text-lg text-sage">-43.2 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Muscle preserved</span>
+                    <span className="font-bold text-lg text-sage">94%</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3">
+                    <span className="text-sm text-gray-500">Program</span>
+                    <span className="text-sm font-medium">Tirzepatide + Coaching</span>
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
+                  &ldquo;I&apos;ve done GLP-1s before and always felt weak
+                  after. This time I came out stronger than I started.&rdquo;
+                </p>
               </div>
 
-              {/* Testimonial 3 */}
-              <div className="bg-cool-gray rounded-2xl overflow-hidden border border-gray-200/60">
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/marcus-before.jpg"
-                      alt="Marcus — before"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://s3.amazonaws.com/assets.dev.future.fit/images/bca1be57-cdb5-4b08-bb18-964d3c0f01c7.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      Before
-                    </span>
+              {/* Member 3 */}
+              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-12 h-12 rounded-full bg-purple/10 flex items-center justify-center">
+                    <span className="font-bold text-purple">M</span>
                   </div>
-                  <div className="relative aspect-[3/4] bg-gray-200">
-                    <img
-                      src="/testimonials/marcus-after.jpg"
-                      alt="Marcus — after"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_auto/v1/https://s3.amazonaws.com/assets.dev.future.fit/images/bca1be57-cdb5-4b08-bb18-964d3c0f01c7.jpg";
-                      }}
-                    />
-                    <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
-                      After
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between">
+                  <div>
                     <p className="font-bold">Marcus T.</p>
-                    <p className="text-xs text-gray-400">38, Denver CO</p>
+                    <p className="text-xs text-gray-500">38 · Denver, CO</p>
                   </div>
-                  <div className="flex gap-4 mt-3">
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Weight Lost
-                      </p>
-                      <p className="font-bold text-sage">-35 lbs</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">
-                        Muscle Retained
-                      </p>
-                      <p className="font-bold text-sage">100%</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-3 italic leading-relaxed">
-                    &ldquo;The med killed my appetite but coaching kept me
-                    eating enough protein. Biggest difference of my life.&rdquo;
-                  </p>
                 </div>
+
+                <div className="space-y-4 flex-1">
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Weight lost</span>
+                    <span className="font-bold text-lg">-35 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Fat mass lost</span>
+                    <span className="font-bold text-lg text-sage">-35.2 lbs</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
+                    <span className="text-sm text-gray-500">Muscle preserved</span>
+                    <span className="font-bold text-lg text-sage">100%</span>
+                  </div>
+                  <div className="flex items-baseline justify-between py-3">
+                    <span className="text-sm text-gray-500">Program</span>
+                    <span className="text-sm font-medium">Tirzepatide + Coaching</span>
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
+                  &ldquo;The med killed my appetite. Coaching kept me eating
+                  enough protein. Biggest difference of my life.&rdquo;
+                </p>
               </div>
             </div>
 
-            <p className="text-[10px] text-gray-400 text-center mt-8 max-w-lg mx-auto">
-              Individual results vary. Testimonials represent results from
-              patients who combined GLP-1 medication with Future coaching and
-              resistance training.
+            <p className="text-[10px] text-gray-400 text-center mt-10 max-w-lg mx-auto leading-relaxed">
+              Individual results vary. Outcomes reflect members who combined
+              GLP-1 medication with Future coaching and resistance training.
+              Body composition measured via DEXA scan at intake and 6 months.
             </p>
           </div>
         </section>
