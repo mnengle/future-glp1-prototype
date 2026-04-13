@@ -16,7 +16,7 @@ const TIMELINE_OPTIONS = [
   "As soon as possible",
   "3 – 6 months",
   "6 – 12 months",
-  "No rush — sustainable pace",
+  "No rush, sustainable pace",
 ];
 
 const MOTIVATION_OPTIONS = [

@@ -30,49 +30,63 @@ const INCLUDES = [
   "HSA/FSA eligible",
 ];
 
+// Competitor pricing verified via public pricing pages and third-party
+// review aggregators, April 2026. See /docs/pricing-research.md for sources.
 const COMPETITOR_COMPARISON = [
   {
-    feature: "Semaglutide starting price",
-    future: "$179/mo",
-    hims: "$199/mo",
-    ro: "$199/mo (promo)",
+    feature: "Semaglutide ongoing price",
+    future: "$299/mo",
+    hims: "$175/mo",
+    ro: "$199 to $299",
+    henry: "$197 to $397",
+    mochi: "$178/mo",
   },
   {
-    feature: "Tirzepatide starting price",
-    future: "$279/mo",
+    feature: "Tirzepatide ongoing price",
+    future: "$399/mo",
     hims: "$299/mo",
-    ro: "$349/mo",
+    ro: "$399 to $449",
+    henry: "$199+/mo",
+    mochi: "$278/mo",
   },
   {
-    feature: "Membership fee",
+    feature: "Required membership fee",
     future: "None",
     hims: "None",
-    ro: "$145/mo",
+    ro: "Bundled",
+    henry: "None",
+    mochi: "$79/mo",
   },
   {
-    feature: "Month-to-month (no contract)",
+    feature: "Month-to-month (no prepay)",
     future: true,
     hims: false,
     ro: false,
+    henry: true,
+    mochi: true,
   },
   {
-    feature: "Coaching included",
+    feature: "Coaching referral included",
     future: "1st month free",
     hims: false,
     ro: false,
+    henry: false,
+    mochi: false,
   },
   {
     feature: "Resistance training program",
     future: true,
     hims: false,
     ro: false,
+    henry: false,
+    mochi: false,
   },
 ];
 
 const FAQS = [
   {
     q: "Are there any hidden fees?",
-    a: "No. The price you see is the total monthly cost — medication, provider visits, and shipping are all included. No membership fees, no activation costs.",
+    a: "No. The price you see is the total monthly cost. Medication, provider visits, and shipping are all included. No membership fees, no activation costs.",
   },
   {
     q: "Why is the first month cheaper?",
@@ -92,7 +106,7 @@ const FAQS = [
   },
   {
     q: "Does insurance cover this?",
-    a: "GLP-1 medications for weight loss are rarely covered by insurance. Our pricing reflects direct cash pay — no insurance hassle, no prior authorizations.",
+    a: "GLP-1 medications for weight loss are rarely covered by insurance. Our pricing reflects direct cash pay. No insurance hassle, no prior authorizations.",
   },
 ];
 
@@ -120,9 +134,10 @@ export default function PricingPage() {
                 Nothing hidden.
               </span>
             </h1>
-            <p className="text-lg text-white/70 mt-6 max-w-lg mx-auto">
-              Everything you need — medication, provider visits, shipping —
-              included in one simple monthly bill.
+            <p className="text-lg text-white/70 mt-6 max-w-xl mx-auto">
+              Medication, provider visits, and shipping in one monthly bill.
+              No membership fees, no prepay requirements, no surprise
+              dose-based price hikes.
             </p>
           </div>
         </section>
@@ -322,109 +337,107 @@ export default function PricingPage() {
                     <th className="text-left py-4 text-xs font-semibold uppercase tracking-wider text-gray-400"></th>
                     <th className="py-4 text-center">
                       <div className="inline-flex flex-col items-center">
-                        <span className="text-lg font-bold">Future</span>
+                        <span className="text-base md:text-lg font-bold">
+                          Future
+                        </span>
                         <span className="text-[10px] bg-black text-white uppercase tracking-wider px-2 py-0.5 rounded mt-1">
-                          Best Value
+                          Coaching
                         </span>
                       </div>
                     </th>
                     <th className="py-4 text-center">
-                      <span className="text-lg font-medium text-gray-500">
+                      <span className="text-base md:text-lg font-medium text-gray-500">
                         Hims
                       </span>
                     </th>
                     <th className="py-4 text-center">
-                      <span className="text-lg font-medium text-gray-500">
+                      <span className="text-base md:text-lg font-medium text-gray-500">
                         Ro
+                      </span>
+                    </th>
+                    <th className="py-4 text-center">
+                      <span className="text-base md:text-lg font-medium text-gray-500">
+                        Henry
+                      </span>
+                    </th>
+                    <th className="py-4 text-center">
+                      <span className="text-base md:text-lg font-medium text-gray-500">
+                        Mochi
                       </span>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {COMPETITOR_COMPARISON.map((row, i) => (
-                    <tr
-                      key={i}
-                      className="border-b border-gray-100 hover:bg-warm-gray/50 transition-colors"
-                    >
-                      <td className="py-4 text-sm font-medium text-gray-700">
-                        {row.feature}
-                      </td>
-                      <td className="py-4 text-center text-sm font-bold">
-                        {typeof row.future === "boolean" ? (
-                          row.future ? (
-                            <svg
-                              className="w-5 h-5 text-sage inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={3}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          ) : (
-                            <span className="text-gray-300">—</span>
-                          )
+                  {COMPETITOR_COMPARISON.map((row, i) => {
+                    const renderCell = (
+                      value: string | boolean,
+                      highlight: boolean
+                    ) => {
+                      if (typeof value === "boolean") {
+                        return value ? (
+                          <svg
+                            className="w-5 h-5 text-sage inline"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={3}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
                         ) : (
-                          <span className="text-black">{row.future}</span>
-                        )}
-                      </td>
-                      <td className="py-4 text-center text-sm text-gray-500">
-                        {typeof row.hims === "boolean" ? (
-                          row.hims ? (
-                            <svg
-                              className="w-5 h-5 text-sage inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={3}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          ) : (
-                            <span className="text-gray-300">—</span>
-                          )
-                        ) : (
-                          row.hims
-                        )}
-                      </td>
-                      <td className="py-4 text-center text-sm text-gray-500">
-                        {typeof row.ro === "boolean" ? (
-                          row.ro ? (
-                            <svg
-                              className="w-5 h-5 text-sage inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={3}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          ) : (
-                            <span className="text-gray-300">—</span>
-                          )
-                        ) : (
-                          row.ro
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                          <span className="text-gray-300">·</span>
+                        );
+                      }
+                      return (
+                        <span
+                          className={
+                            highlight
+                              ? "text-black font-bold"
+                              : "text-gray-500"
+                          }
+                        >
+                          {value}
+                        </span>
+                      );
+                    };
+
+                    return (
+                      <tr
+                        key={i}
+                        className="border-b border-gray-100 hover:bg-warm-gray/50 transition-colors"
+                      >
+                        <td className="py-4 pr-4 text-sm font-medium text-gray-700">
+                          {row.feature}
+                        </td>
+                        <td className="py-4 text-center text-sm">
+                          {renderCell(row.future, true)}
+                        </td>
+                        <td className="py-4 text-center text-sm">
+                          {renderCell(row.hims, false)}
+                        </td>
+                        <td className="py-4 text-center text-sm">
+                          {renderCell(row.ro, false)}
+                        </td>
+                        <td className="py-4 text-center text-sm">
+                          {renderCell(row.henry, false)}
+                        </td>
+                        <td className="py-4 text-center text-sm">
+                          {renderCell(row.mochi, false)}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
-              <p className="text-xs text-gray-400 text-center mt-6">
-                Prices verified April 2026. Competitor pricing changes
-                frequently.
+              <p className="text-xs text-gray-400 text-center mt-6 max-w-2xl mx-auto leading-relaxed">
+                Competitor pricing compiled from public pricing pages and
+                third-party review aggregators, April 2026. Prices change
+                frequently. Some competitors require multi-month prepayment to
+                access the lowest advertised rates.
               </p>
             </div>
           </div>

@@ -5,8 +5,8 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
 const goals = [
-  { label: "1 – 20 lbs", value: "1-20" },
-  { label: "21 – 50 lbs", value: "21-50" },
+  { label: "1 to 20 lbs", value: "1-20" },
+  { label: "21 to 50 lbs", value: "21-50" },
   { label: "51+ lbs", value: "51+" },
   { label: "Not sure yet", value: "unsure" },
 ];
@@ -41,15 +41,69 @@ const steps = [
 const medications = [
   {
     name: "Semaglutide",
-    description: "Same active ingredient as Ozempic & Wegovy",
+    description: "Same active ingredient as Ozempic and Wegovy",
     stat: "14.9% body weight loss at 68 weeks",
     citation: "STEP 1 Trial, NEJM 2021",
   },
   {
     name: "Tirzepatide",
-    description: "Same active ingredient as Mounjaro & Zepbound",
+    description: "Same active ingredient as Mounjaro and Zepbound",
     stat: "22.5% body weight loss at 72 weeks",
     citation: "SURMOUNT-1 Trial, NEJM 2022",
+  },
+];
+
+const members = [
+  {
+    initial: "D",
+    name: "David K.",
+    age: "32",
+    city: "Austin, TX",
+    accent: "coral",
+    weightLost: "-28 lbs",
+    fatLost: "-27.3 lbs",
+    musclePreserved: "97%",
+    program: "Semaglutide + Coaching",
+    quote:
+      "I didn't just want to be skinny. I wanted to be strong. My coach programmed lifts around how I was feeling on the med.",
+    beforeImg:
+      "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&h=800&fit=crop",
+    afterImg:
+      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=800&fit=crop",
+  },
+  {
+    initial: "S",
+    name: "Sarah M.",
+    age: "41",
+    city: "Chicago, IL",
+    accent: "sage",
+    weightLost: "-46 lbs",
+    fatLost: "-43.2 lbs",
+    musclePreserved: "94%",
+    program: "Tirzepatide + Coaching",
+    quote:
+      "I've done GLP-1s before and always felt weak after. This time I came out stronger than I started.",
+    beforeImg:
+      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=800&fit=crop",
+    afterImg:
+      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&h=800&fit=crop&sat=-30",
+  },
+  {
+    initial: "M",
+    name: "Marcus T.",
+    age: "38",
+    city: "Denver, CO",
+    accent: "purple",
+    weightLost: "-35 lbs",
+    fatLost: "-35.2 lbs",
+    musclePreserved: "100%",
+    program: "Tirzepatide + Coaching",
+    quote:
+      "The med killed my appetite. Coaching kept me eating enough protein. Biggest difference of my life.",
+    beforeImg:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=800&fit=crop",
+    afterImg:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=800&fit=crop",
   },
 ];
 
@@ -60,7 +114,6 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="relative bg-black text-white overflow-hidden">
-          {/* Background image */}
           <div className="absolute inset-0">
             <img
               src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_3840/f_auto/q_90/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg"
@@ -86,8 +139,8 @@ export default function Home() {
               </h1>
               <p className="text-lg md:text-xl text-white/70 mt-8 max-w-lg leading-relaxed">
                 Clinically proven GLP-1 medications, paired with expert coaching
-                and resistance training. Because the research is clear —
-                medication alone isn&apos;t enough.
+                and resistance training. The research is clear: medication alone
+                isn&apos;t enough.
               </p>
 
               <div className="mt-10">
@@ -117,13 +170,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* The problem — stat bar */}
+        {/* Stat bar */}
         <section className="bg-white border-b border-gray-200/60">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-8 flex flex-wrap items-center justify-center gap-8 md:gap-16 text-center">
             <div>
               <p className="text-2xl font-bold text-hot-pink">Up to 40%</p>
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                Of weight lost on GLP-1s is muscle
+                Of weight lost on GLP-1s is lean mass
               </p>
             </div>
             <div className="w-px h-8 bg-gray-200 hidden md:block" />
@@ -135,23 +188,23 @@ export default function Home() {
             </div>
             <div className="w-px h-8 bg-gray-200 hidden md:block" />
             <div>
-              <p className="text-2xl font-bold text-sage">~3% muscle loss</p>
+              <p className="text-2xl font-bold text-sage">90%+ preserved</p>
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                When paired with resistance training
+                With resistance training and protein
               </p>
             </div>
           </div>
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] pb-4 text-center">
             <p className="text-[10px] text-gray-400">
-              Sources: STEP 1 body composition substudy (NEJM 2021); STEP 1
-              extension — Wilding et al. (Diabetes, Obesity &amp; Metabolism
-              2022); Medscape 2025 prospective study on resistance training +
-              GLP-1 RAs
+              Sources: STEP 1 body composition substudy (Wilding et al., NEJM
+              2021); STEP 1 extension (Wilding et al., Diabetes, Obesity and
+              Metabolism 2022); ISSN position on protein intake during weight
+              loss (Jäger et al., 2017).
             </p>
           </div>
         </section>
 
-        {/* The muscle problem — education */}
+        {/* The muscle problem */}
         <section className="bg-warm-gray">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl mx-auto">
@@ -162,22 +215,23 @@ export default function Home() {
                 GLP-1 medications work. But there&apos;s a catch.
               </h2>
               <p className="text-gray-500 text-center mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
-                Clinical trials show that 25–40% of weight lost on semaglutide
-                and tirzepatide is lean body mass — not fat. That means muscle,
-                bone density, and metabolic capacity. Without intervention, you
-                lose the weight but weaken the body underneath.
+                Clinical trials show that 25 to 40% of weight lost on
+                semaglutide and tirzepatide is lean body mass, not fat. That
+                includes muscle, bone density, and metabolic capacity. Without
+                intervention, you lose the weight but weaken the body
+                underneath.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
-                  <p className="text-3xl font-bold text-hot-pink">39–45%</p>
+                  <p className="text-3xl font-bold text-hot-pink">~39%</p>
                   <p className="text-sm font-semibold mt-2">
                     Lean mass as a share of total weight lost
                   </p>
                   <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    In the STEP 1 body composition substudy, participants lost
-                    ~6.9 kg of lean mass out of ~15.3 kg total weight lost on
-                    semaglutide 2.4mg.
+                    In the STEP 1 body composition substudy, about 39% of total
+                    weight lost on semaglutide 2.4mg came from lean body mass,
+                    not fat.
                   </p>
                 </div>
                 <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
@@ -187,21 +241,19 @@ export default function Home() {
                   </p>
                   <p className="text-xs text-gray-400 mt-2 leading-relaxed">
                     The STEP 1 extension found participants regained two-thirds
-                    of lost weight after stopping semaglutide — and regained
+                    of lost weight after stopping semaglutide, and the regained
                     weight tends to come back as fat, not muscle.
                   </p>
                 </div>
                 <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
-                  <p className="text-3xl font-bold text-sage">
-                    Preventable
-                  </p>
+                  <p className="text-3xl font-bold text-sage">Preventable</p>
                   <p className="text-sm font-semibold mt-2">
-                    With resistance training + protein
+                    With resistance training and protein
                   </p>
                   <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    A 2025 prospective study found patients who combined
-                    resistance training with GLP-1s lost 13% body weight but
-                    only ~3% muscle mass. Some patients actually gained muscle.
+                    Emerging research suggests resistance training combined
+                    with adequate protein intake can dramatically reduce muscle
+                    loss during GLP-1 treatment.
                   </p>
                 </div>
               </div>
@@ -235,8 +287,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Member Results — transformation stats */}
-        <section className="bg-white">
+        {/* Member Transformations with before/after */}
+        <section className="bg-white border-t border-gray-100">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-14">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
@@ -246,134 +298,102 @@ export default function Home() {
                 Fat loss without the muscle loss.
               </h2>
               <p className="text-gray-500 mt-3 text-lg">
-                Outcomes from members who paired Future coaching with their
-                GLP-1 medication. Lean mass measured via DEXA scan.
+                Results from members who paired Future coaching with their
+                GLP-1 medication.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* Member 1 */}
-              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-coral/10 flex items-center justify-center">
-                    <span className="font-bold text-coral">D</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {members.map((member) => (
+                <div
+                  key={member.name}
+                  className="bg-cool-gray rounded-2xl overflow-hidden border border-gray-200/60 flex flex-col"
+                >
+                  {/* Before / After images */}
+                  <div className="grid grid-cols-2 gap-0.5 bg-gray-200">
+                    <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
+                      <img
+                        src={member.beforeImg}
+                        alt={`${member.name} before`}
+                        className="w-full h-full object-cover grayscale-[20%]"
+                      />
+                      <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
+                        Before
+                      </span>
+                    </div>
+                    <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
+                      <img
+                        src={member.afterImg}
+                        alt={`${member.name} after`}
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
+                        After
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-bold">David K.</p>
-                    <p className="text-xs text-gray-500">32 · Austin, TX</p>
+
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div
+                        className={`w-10 h-10 rounded-full bg-${member.accent}/10 flex items-center justify-center flex-shrink-0`}
+                      >
+                        <span className={`font-bold text-${member.accent}`}>
+                          {member.initial}
+                        </span>
+                      </div>
+                      <div>
+                        <p className="font-bold">{member.name}</p>
+                        <p className="text-xs text-gray-500">
+                          {member.age} · {member.city}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 py-3 border-y border-gray-200">
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                          Weight
+                        </p>
+                        <p className="font-bold">{member.weightLost}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                          Fat
+                        </p>
+                        <p className="font-bold text-sage">{member.fatLost}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-wider">
+                          Muscle
+                        </p>
+                        <p className="font-bold text-sage">
+                          {member.musclePreserved}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-gray-500 mt-3">
+                      {member.program}
+                    </p>
+
+                    <p className="text-sm text-gray-600 italic leading-relaxed mt-4 flex-1">
+                      &ldquo;{member.quote}&rdquo;
+                    </p>
                   </div>
                 </div>
-
-                <div className="space-y-4 flex-1">
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Weight lost</span>
-                    <span className="font-bold text-lg">-28 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Fat mass lost</span>
-                    <span className="font-bold text-lg text-sage">-27.3 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Muscle preserved</span>
-                    <span className="font-bold text-lg text-sage">97%</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3">
-                    <span className="text-sm text-gray-500">Program</span>
-                    <span className="text-sm font-medium">Semaglutide + Coaching</span>
-                  </div>
-                </div>
-
-                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
-                  &ldquo;I didn&apos;t just want to be skinny — I wanted to be
-                  strong. My coach programmed lifts around how I was feeling on
-                  the med.&rdquo;
-                </p>
-              </div>
-
-              {/* Member 2 */}
-              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-sage/10 flex items-center justify-center">
-                    <span className="font-bold text-sage">S</span>
-                  </div>
-                  <div>
-                    <p className="font-bold">Sarah M.</p>
-                    <p className="text-xs text-gray-500">41 · Chicago, IL</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4 flex-1">
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Weight lost</span>
-                    <span className="font-bold text-lg">-46 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Fat mass lost</span>
-                    <span className="font-bold text-lg text-sage">-43.2 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Muscle preserved</span>
-                    <span className="font-bold text-lg text-sage">94%</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3">
-                    <span className="text-sm text-gray-500">Program</span>
-                    <span className="text-sm font-medium">Tirzepatide + Coaching</span>
-                  </div>
-                </div>
-
-                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
-                  &ldquo;I&apos;ve done GLP-1s before and always felt weak
-                  after. This time I came out stronger than I started.&rdquo;
-                </p>
-              </div>
-
-              {/* Member 3 */}
-              <div className="bg-cool-gray rounded-2xl p-7 border border-gray-200/60 flex flex-col">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-full bg-purple/10 flex items-center justify-center">
-                    <span className="font-bold text-purple">M</span>
-                  </div>
-                  <div>
-                    <p className="font-bold">Marcus T.</p>
-                    <p className="text-xs text-gray-500">38 · Denver, CO</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4 flex-1">
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Weight lost</span>
-                    <span className="font-bold text-lg">-35 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Fat mass lost</span>
-                    <span className="font-bold text-lg text-sage">-35.2 lbs</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3 border-b border-gray-200">
-                    <span className="text-sm text-gray-500">Muscle preserved</span>
-                    <span className="font-bold text-lg text-sage">100%</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-3">
-                    <span className="text-sm text-gray-500">Program</span>
-                    <span className="text-sm font-medium">Tirzepatide + Coaching</span>
-                  </div>
-                </div>
-
-                <p className="text-sm text-gray-600 italic leading-relaxed mt-4 pt-5 border-t border-gray-200">
-                  &ldquo;The med killed my appetite. Coaching kept me eating
-                  enough protein. Biggest difference of my life.&rdquo;
-                </p>
-              </div>
+              ))}
             </div>
 
             <p className="text-[10px] text-gray-400 text-center mt-10 max-w-lg mx-auto leading-relaxed">
               Individual results vary. Outcomes reflect members who combined
               GLP-1 medication with Future coaching and resistance training.
-              Body composition measured via DEXA scan at intake and 6 months.
+              Photos are staging placeholders.
             </p>
           </div>
         </section>
 
-        {/* Training section with imagery */}
+        {/* Training section */}
         <section className="bg-warm-gray">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -384,12 +404,12 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                   Your body on GLP-1 is different.
                   <br />
-                  Your training should be, too.
+                  Your training should be too.
                 </h2>
                 <p className="text-gray-500 mt-4 text-lg leading-relaxed">
                   Appetite shifts. Energy changes. Some days you&apos;ll feel
-                  great; others you&apos;ll feel flat. Your Future coach builds
-                  a program around these realities — and adjusts it week by
+                  great. Others you&apos;ll feel flat. Your Future coach builds
+                  a program around these realities and adjusts it week by
                   week.
                 </p>
 
@@ -399,7 +419,9 @@ export default function Home() {
                       1
                     </div>
                     <div>
-                      <h3 className="font-semibold">Strength-first programming</h3>
+                      <h3 className="font-semibold">
+                        Strength-first programming
+                      </h3>
                       <p className="text-sm text-gray-500 mt-1">
                         Compound lifts, progressive overload, and movement
                         patterns designed to preserve muscle while you lose fat.
@@ -425,7 +447,7 @@ export default function Home() {
                     <div>
                       <h3 className="font-semibold">Protein periodization</h3>
                       <p className="text-sm text-gray-500 mt-1">
-                        0.7–1.7 g/kg of protein daily, timed with training,
+                        1.2 to 2.0 g/kg of protein daily, timed with training,
                         makes the difference between losing weight and losing
                         muscle.
                       </p>
@@ -446,7 +468,8 @@ export default function Home() {
                     Built Around Science
                   </p>
                   <p className="text-white font-bold text-xl mt-1">
-                    Resistance training 3–5x/wk, 0.7–1.7g protein per kg
+                    Resistance training 3 to 5x per week, 1.2 to 2.0g protein
+                    per kg
                   </p>
                 </div>
               </div>
@@ -461,8 +484,8 @@ export default function Home() {
               Clinically proven medications
             </h2>
             <p className="text-gray-500 text-center mt-3 text-lg max-w-xl mx-auto">
-              FDA-approved GLP-1 receptor agonists prescribed by licensed
-              physicians.
+              Prescribed by licensed physicians. Same active ingredients as
+              brand-name GLP-1s.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14 max-w-3xl mx-auto">
@@ -498,10 +521,17 @@ export default function Home() {
                 $149 first month, then $299/month. Cancel anytime.
               </p>
             </div>
+
+            <p className="text-[10px] text-gray-400 text-center mt-8 max-w-2xl mx-auto leading-relaxed">
+              Brand-name products (Ozempic, Wegovy, Mounjaro, Zepbound) are
+              FDA-approved. Compounded formulations, when offered, are
+              prescribed and prepared under applicable FDA compounding
+              guidelines.
+            </p>
           </div>
         </section>
 
-        {/* The Future Difference — coaching */}
+        {/* The Future Difference */}
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl mx-auto">
@@ -512,34 +542,34 @@ export default function Home() {
                 Build muscle while you lose weight.
               </h2>
               <p className="text-lg text-white/60 mt-4 leading-relaxed text-center max-w-2xl mx-auto">
-                The American Diabetes Association recommends resistance training
-                as a co-intervention with GLP-1 medications. Your Future coach
-                makes sure it actually happens.
+                Leading medical organizations recommend combining resistance
+                training with obesity pharmacotherapy to preserve lean mass.
+                Your Future coach makes sure it actually happens.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Resistance training</h3>
                   <p className="text-sm text-white/50 mt-2 leading-relaxed">
-                    Personalized strength programs designed to preserve and build
-                    lean mass during weight loss. Adapted weekly based on your
-                    progress and energy levels.
+                    Personalized strength programs designed to preserve and
+                    build lean mass during weight loss. Adapted weekly based on
+                    your progress and energy levels.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Protein optimization</h3>
                   <p className="text-sm text-white/50 mt-2 leading-relaxed">
-                    Research shows 0.7–1.7 g/kg/day protein intake alongside
-                    resistance training dramatically improves muscle retention.
-                    Your coach dials in your macros.
+                    Research supports 1.2 to 2.0 g/kg/day protein intake during
+                    active weight loss with resistance training. Your coach
+                    dials in your macros.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Lasting results</h3>
                   <p className="text-sm text-white/50 mt-2 leading-relaxed">
-                    A Lancet study found exercise + GLP-1 maintained weight loss
-                    one year after stopping — unlike medication alone, where
-                    two-thirds of weight returns.
+                    A Lancet-family RCT of exercise combined with liraglutide
+                    maintained weight loss one year after stopping medication,
+                    unlike pharmacotherapy alone.
                   </p>
                 </div>
               </div>
@@ -554,10 +584,10 @@ export default function Home() {
               </div>
 
               <p className="text-[10px] text-white/30 text-center mt-8 max-w-2xl mx-auto">
-                Sources: Diabetes Care (ADA) 2024; eClinicalMedicine/The Lancet
-                2024 — Exercise + Liraglutide RCT; STEP 1 Extension (Wilding et
-                al., Diabetes Obesity &amp; Metabolism 2022); PMC 2025 case
-                series on resistance training + GLP-1/GIP agonists
+                Sources: ADA Standards of Care in Diabetes 2024; Jensen et al.,
+                eClinicalMedicine 2024 (Exercise + Liraglutide RCT); Wilding et
+                al., STEP 1 Extension (Diabetes, Obesity and Metabolism 2022);
+                Jäger et al., ISSN Position on Protein and Exercise (2017).
               </p>
             </div>
           </div>

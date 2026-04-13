@@ -66,7 +66,7 @@ export default function CheckoutPage() {
               <div className="flex justify-between">
                 <div>
                   <p className="font-medium">{medName}</p>
-                  <p className="text-sm text-gray-500">{formName} — {medication?.dosage}</p>
+                  <p className="text-sm text-gray-500">{formName} · {medication?.dosage}</p>
                 </div>
                 <p className="font-semibold">${price?.first}</p>
               </div>

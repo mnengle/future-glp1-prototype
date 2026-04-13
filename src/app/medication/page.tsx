@@ -12,7 +12,7 @@ const MEDICATIONS = [
     name: "Semaglutide",
     brand: "Same active ingredient as Ozempic & Wegovy",
     efficacy: "Up to 15% body weight loss in clinical trials",
-    mechanism: "GLP-1 receptor agonist — reduces appetite and slows digestion",
+    mechanism: "GLP-1 receptor agonist. Reduces appetite and slows digestion.",
     injectionPrice: { first: 179, monthly: 299 },
     oralPrice: { first: 249, monthly: 369 },
   },
@@ -22,7 +22,7 @@ const MEDICATIONS = [
     brand: "Same active ingredient as Mounjaro & Zepbound",
     efficacy: "Up to 22% body weight loss in clinical trials",
     mechanism:
-      "Dual GIP/GLP-1 receptor agonist — targets two pathways for greater effect",
+      "Dual GIP/GLP-1 receptor agonist. Targets two pathways for greater effect.",
     injectionPrice: { first: 279, monthly: 399 },
     oralPrice: { first: 279, monthly: 399 },
   },

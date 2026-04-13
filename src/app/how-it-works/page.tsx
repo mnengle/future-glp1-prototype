@@ -17,7 +17,7 @@ const TIMELINE_STEPS = [
   {
     day: "Day 1 – 2",
     title: "A licensed physician reviews your file",
-    body: "Your provider — licensed in your state through SteadyMD — reviews your assessment asynchronously. No video call required in most cases. If they need more info, they'll message you directly.",
+    body: "Your provider, licensed in your state through SteadyMD, reviews your assessment asynchronously. No video call required in most cases. If they need more info, they'll message you directly.",
     image:
       "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-desktop-bg.jpg",
     accent: "purple",
@@ -47,11 +47,11 @@ const FAQS = [
   },
   {
     q: "How is this different from Hims or Ro?",
-    a: "Most telehealth GLP-1 providers only sell medication. We pair medication with a referral to Future coaching, because clinical research shows up to 40% of weight lost on GLP-1s is muscle — unless you resistance train. Our job is to make sure your results last.",
+    a: "Most telehealth GLP-1 providers only sell medication. We pair medication with a referral to Future coaching. Clinical research shows up to 40% of weight lost on GLP-1s is lean mass unless you resistance train. Our job is to make sure your results last.",
   },
   {
     q: "Is the coaching required?",
-    a: "No. The GLP-1 program works independently. But we strongly recommend combining it with Future coaching. Patients who pair resistance training with GLP-1s lose 13% body weight but only ~3% muscle mass — a dramatically better outcome.",
+    a: "No. The GLP-1 program works independently. But we strongly recommend combining it with Future coaching. Emerging research suggests that pairing resistance training with GLP-1 therapy can dramatically reduce the proportion of weight lost as muscle.",
   },
   {
     q: "What happens if the provider doesn't approve me?",

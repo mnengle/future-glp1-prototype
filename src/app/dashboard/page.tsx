@@ -181,12 +181,12 @@ export default function DashboardPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Check-in</span>
-                <span className="font-medium">Week 2 — Apr 27, 2026</span>
+                <span className="font-medium">Week 2 · Apr 27, 2026</span>
               </div>
             </div>
           </div>
 
-          {/* Coaching referral — not connected to medication program */}
+          {/* Coaching referral (not connected to medication program) */}
           <div className="relative bg-black text-white rounded-2xl overflow-hidden mb-6">
             <div className="grid grid-cols-1 md:grid-cols-5">
               {/* Coach image */}
@@ -214,7 +214,7 @@ export default function DashboardPage() {
                 <p className="text-sm text-white/60 mt-3 leading-relaxed">
                   Up to 40% of weight lost on GLP-1s can be muscle. Pair your
                   medication with a Future coach and resistance training
-                  designed around your body — so the weight you lose stays off.
+                  designed around your body, so the weight you lose stays off.
                 </p>
 
                 <div className="mt-5 flex items-baseline gap-3">
