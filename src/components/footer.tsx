@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FutureLogo } from "./logo";
 
 export function Footer() {
   return (
@@ -6,7 +7,7 @@ export function Footer() {
       <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <span className="text-xl font-bold tracking-tight">future</span>
+            <FutureLogo className="h-5 text-white" />
             <p className="text-sm text-white/60 mt-3 leading-relaxed">
               Smart coaching meets medical weight loss. Expert-guided GLP-1
               programs that adapt to you.

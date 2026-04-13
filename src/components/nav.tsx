@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FutureLogo } from "./logo";
 
 export function Nav() {
   const pathname = usePathname();
@@ -10,10 +11,8 @@ export function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/60">
       <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center">
-          <span className="text-xl font-bold tracking-tight text-black">
-            future
-          </span>
+        <Link href="/" className="flex items-center text-black">
+          <FutureLogo className="h-5" />
         </Link>
 
         <div className="flex items-center gap-6">
