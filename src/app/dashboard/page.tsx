@@ -185,30 +185,72 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Coaching */}
-          <div className="bg-black text-white rounded-2xl p-6 mb-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/50">
-                  Your Future Coach
-                </p>
-                <h3 className="text-xl font-bold mt-1">Alex Rivera</h3>
-                <p className="text-sm text-white/60 mt-1">
-                  Certified Personal Trainer, Nutrition Specialist
-                </p>
+          {/* Coaching referral — not connected to medication program */}
+          <div className="relative bg-black text-white rounded-2xl overflow-hidden mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-5">
+              {/* Coach image */}
+              <div className="md:col-span-2 relative h-64 md:h-auto">
+                <img
+                  src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1200/f_auto/q_auto/v1/https://s3.amazonaws.com/assets.dev.future.fit/images/c1b8b0d5-cf4c-4c8f-a097-ab2ca4152542.jpg"
+                  alt="Future Coach"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/30 to-transparent" />
               </div>
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <span className="text-lg font-bold">AR</span>
+
+              {/* Content */}
+              <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
+                <div className="inline-flex self-start items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold">
+                  <span className="future-gradient-text font-bold">
+                    EXCLUSIVE
+                  </span>
+                  <span className="text-white/80">for GLP-1 patients</span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight mt-3">
+                  Protect your muscle while you lose fat.
+                </h3>
+                <p className="text-sm text-white/60 mt-3 leading-relaxed">
+                  Up to 40% of weight lost on GLP-1s can be muscle. Pair your
+                  medication with a Future coach and resistance training
+                  designed around your body — so the weight you lose stays off.
+                </p>
+
+                <div className="mt-5 flex items-baseline gap-3">
+                  <p className="text-3xl font-bold">First month free</p>
+                  <p className="text-sm text-white/40 line-through">$199</p>
+                </div>
+                <p className="text-xs text-white/50 mt-1">
+                  Then $199/month. Cancel anytime.
+                </p>
+
+                <a
+                  href="https://future.co?utm_source=glp1&utm_medium=dashboard&utm_campaign=first-month-free"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 mt-5 bg-white text-black text-sm font-semibold px-6 py-3 rounded-lg hover:opacity-80 transition-opacity self-start"
+                >
+                  Claim Your Free Month
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+                <p className="text-[10px] text-white/30 mt-3">
+                  Future is a separate service. Coaching is not part of your
+                  GLP-1 treatment program.
+                </p>
               </div>
             </div>
-            <p className="text-sm text-white/60 mt-4 leading-relaxed">
-              Your coach will design a complementary fitness and nutrition plan
-              that works alongside your GLP-1 treatment — so the habits stick
-              even after you finish medication.
-            </p>
-            <button className="mt-4 bg-white text-black text-sm font-semibold px-6 py-2.5 rounded-lg hover:opacity-80 transition-opacity">
-              Message Coach
-            </button>
           </div>
 
           {/* Quick actions */}

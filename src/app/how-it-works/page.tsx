@@ -1,0 +1,318 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Nav } from "@/components/nav";
+import { Footer } from "@/components/footer";
+
+const TIMELINE_STEPS = [
+  {
+    day: "Day 1",
+    title: "Complete your 5-minute assessment",
+    body: "Share your health history, current weight, goals, and any medications. Our intake asks only what a licensed physician actually needs to prescribe safely.",
+    image:
+      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-michelle-portrait.jpg",
+    accent: "coral",
+  },
+  {
+    day: "Day 1 – 2",
+    title: "A licensed physician reviews your file",
+    body: "Your provider — licensed in your state through SteadyMD — reviews your assessment asynchronously. No video call required in most cases. If they need more info, they'll message you directly.",
+    image:
+      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-desktop-bg.jpg",
+    accent: "purple",
+  },
+  {
+    day: "Day 2 – 5",
+    title: "Your prescription is written and shipped",
+    body: "Once approved, your medication is e-prescribed to your selected pharmacy. Partner pharmacy ships direct to your door within 2-5 business days. Discreet packaging, no signature required.",
+    image:
+      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg",
+    accent: "sage",
+  },
+  {
+    day: "Week 1 +",
+    title: "Start your coaching program",
+    body: "Claim your first month free with Future. Your coach designs a resistance training program and dials in protein targets to preserve muscle while you lose fat. Chat with them anytime, anywhere.",
+    image:
+      "https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_auto/v1/https://future.co/images/footer/pro-footer.jpg",
+    accent: "soft-blue",
+  },
+];
+
+const FAQS = [
+  {
+    q: "Who prescribes the medication?",
+    a: "All prescriptions are written by licensed physicians through our telemedicine partner, SteadyMD. They are licensed in your state and verify your eligibility before writing any prescription.",
+  },
+  {
+    q: "How is this different from Hims or Ro?",
+    a: "Most telehealth GLP-1 providers only sell medication. We pair medication with a referral to Future coaching, because clinical research shows up to 40% of weight lost on GLP-1s is muscle — unless you resistance train. Our job is to make sure your results last.",
+  },
+  {
+    q: "Is the coaching required?",
+    a: "No. The GLP-1 program works independently. But we strongly recommend combining it with Future coaching. Patients who pair resistance training with GLP-1s lose 13% body weight but only ~3% muscle mass — a dramatically better outcome.",
+  },
+  {
+    q: "What happens if the provider doesn't approve me?",
+    a: "You only pay if approved. If your provider determines GLP-1 medication isn't the right fit, you won't be charged. They may also recommend alternative treatments or request a video consultation for more information.",
+  },
+  {
+    q: "Can I cancel anytime?",
+    a: "Yes. Your subscription auto-renews monthly but you can cancel at any time from your dashboard. We'll ship your current cycle, and nothing after that.",
+  },
+  {
+    q: "What states do you operate in?",
+    a: "We operate in all 50 states where GLP-1 telehealth is legal. Your provider will be licensed specifically in your state.",
+  },
+];
+
+export default function HowItWorksPage() {
+  const [activeStep, setActiveStep] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  return (
+    <>
+      <Nav />
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="bg-black text-white">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
+                How It Works
+              </p>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+                From signup to
+                <br />
+                <span className="future-gradient-text">
+                  medication in hand
+                </span>
+                <br />
+                in under a week.
+              </h1>
+              <p className="text-lg text-white/70 mt-6 max-w-lg">
+                Here&apos;s exactly what happens after you tap &quot;Start
+                Assessment.&quot;
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive timeline */}
+        <section className="bg-warm-gray">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+              {/* Sidebar steps */}
+              <div className="lg:col-span-2">
+                <div className="sticky top-24 space-y-3">
+                  {TIMELINE_STEPS.map((step, i) => {
+                    const isActive = i === activeStep;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => setActiveStep(i)}
+                        className={`w-full text-left p-5 rounded-2xl border transition-all ${
+                          isActive
+                            ? "bg-white border-black shadow-sm"
+                            : "bg-white/40 border-transparent hover:bg-white/70"
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span
+                            className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                              isActive
+                                ? "bg-black text-white"
+                                : "bg-gray-200 text-gray-600"
+                            }`}
+                          >
+                            {step.day}
+                          </span>
+                        </div>
+                        <h3 className="font-bold mt-2">{step.title}</h3>
+                        {isActive && (
+                          <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                            {step.body}
+                          </p>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Active image */}
+              <div className="lg:col-span-3">
+                <div className="sticky top-24 aspect-[4/5] rounded-2xl overflow-hidden bg-gray-200 relative">
+                  {TIMELINE_STEPS.map((step, i) => (
+                    <img
+                      key={i}
+                      src={step.image}
+                      alt={step.title}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                        i === activeStep ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="text-xs font-bold uppercase tracking-wider text-white/70">
+                      {TIMELINE_STEPS[activeStep].day}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mt-1">
+                      {TIMELINE_STEPS[activeStep].title}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Behind the scenes — what we actually do */}
+        <section className="bg-white">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
+                What&apos;s Actually Happening
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                The infrastructure behind your care
+              </h2>
+              <p className="text-gray-500 mt-3 text-lg">
+                We believe in transparency. Here&apos;s who does what.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
+                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-4">
+                  <span className="text-white text-sm font-bold">F</span>
+                </div>
+                <h3 className="font-bold">Future</h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                  Intake, Payment, Support
+                </p>
+                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
+                  We handle the patient experience — your health assessment,
+                  medication selection, checkout, and dashboard. We do not
+                  prescribe or manufacture medication.
+                </p>
+              </div>
+              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
+                <div className="w-10 h-10 bg-purple rounded-full flex items-center justify-center mb-4">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold">SteadyMD</h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                  Medical Services
+                </p>
+                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
+                  Licensed physicians review your assessment, determine
+                  eligibility, and write your prescription. They&apos;re
+                  licensed in your state and HIPAA compliant.
+                </p>
+              </div>
+              <div className="bg-cool-gray rounded-2xl p-6 border border-gray-200/60">
+                <div className="w-10 h-10 bg-sage rounded-full flex items-center justify-center mb-4">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold">Partner Pharmacy</h3>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                  Compounding, Shipping
+                </p>
+                <p className="text-sm text-gray-600 mt-4 leading-relaxed">
+                  Your provider&apos;s prescription is routed via SureScripts to
+                  our partner compounding pharmacy, which compounds,
+                  packages, and ships directly to your door.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="bg-warm-gray">
+          <div className="max-w-3xl mx-auto px-4 md:px-[60px] py-20 md:py-28">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center">
+              Frequently asked questions
+            </h2>
+
+            <div className="mt-12 space-y-3">
+              {FAQS.map((faq, i) => {
+                const isOpen = openFaq === i;
+                return (
+                  <div
+                    key={i}
+                    className="bg-white rounded-2xl border border-gray-200/60 overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between p-5 text-left"
+                    >
+                      <span className="font-semibold pr-4">{faq.q}</span>
+                      <svg
+                        className={`w-5 h-5 flex-shrink-0 transition-transform ${
+                          isOpen ? "rotate-45" : ""
+                        }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="text-center mt-14">
+              <Link
+                href="/assessment"
+                className="inline-block bg-black text-white text-base font-semibold px-10 py-3.5 rounded-lg hover:opacity-80 transition-opacity"
+              >
+                Start Your Assessment
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
