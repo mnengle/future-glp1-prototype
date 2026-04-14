@@ -106,7 +106,7 @@ export default function FaqPage() {
       <Nav />
       <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-24 text-center">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-16 md:py-24 text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Frequently asked questions
             </h1>
@@ -116,7 +116,7 @@ export default function FaqPage() {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto px-4 md:px-[60px] py-16 md:py-20">
+        <section className="max-w-3xl mx-auto px-5 md:px-[60px] py-16 md:py-20">
           {FAQ_SECTIONS.map((section, sectionIdx) => (
             <div key={section.title} className="mb-12">
               <h2 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">

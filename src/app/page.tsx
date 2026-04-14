@@ -126,7 +126,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
           </div>
 
-          <div className="relative w-full max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-32">
+          <div className="relative w-full max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-32">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-wider text-white/70 mb-6">
                 Medical Weight Loss + Coaching
@@ -173,7 +173,7 @@ export default function Home() {
 
         {/* Stat bar */}
         <section className="bg-white border-b border-gray-200/60">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-8 flex flex-wrap items-center justify-center gap-8 md:gap-16 text-center">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-8 flex flex-wrap items-center justify-center gap-8 md:gap-16 text-center">
             <div>
               <p className="text-2xl font-bold text-hot-pink">Up to 40%</p>
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
@@ -195,7 +195,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] pb-4 text-center">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] pb-4 text-center">
             <p className="text-[10px] text-gray-400">
               Sources: STEP 1 body composition substudy (Wilding et al., NEJM
               2021); STEP 1 extension (Wilding et al., Diabetes, Obesity and
@@ -207,7 +207,7 @@ export default function Home() {
 
         {/* The muscle problem */}
         <section className="bg-warm-gray">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl mx-auto">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4 text-center">
                 The Problem Nobody Talks About
@@ -264,7 +264,7 @@ export default function Home() {
 
         {/* How it works */}
         <section className="bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
               How it works
             </h2>
@@ -290,7 +290,7 @@ export default function Home() {
 
         {/* Member Transformations with before/after */}
         <section className="bg-white border-t border-gray-100">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-14">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
                 Member Transformations
@@ -398,7 +398,7 @@ export default function Home() {
 
         {/* Training section */}
         <section className="bg-warm-gray">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
@@ -483,7 +483,7 @@ export default function Home() {
 
         {/* Medications */}
         <section className="bg-cool-gray">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
               Clinically proven medications
             </h2>
@@ -538,7 +538,7 @@ export default function Home() {
 
         {/* The Future Difference */}
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl mx-auto">
               <p className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4 text-center">
                 The Future Difference

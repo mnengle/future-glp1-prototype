@@ -56,7 +56,7 @@ export default function ContactPage() {
       <Nav />
       <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-24 text-center">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-16 md:py-24 text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Contact us
             </h1>
@@ -66,7 +66,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="max-w-2xl mx-auto px-4 md:px-[60px] py-16">
+        <section className="max-w-2xl mx-auto px-5 md:px-[60px] py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="bg-white rounded-2xl border border-gray-200/60 p-5">
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">

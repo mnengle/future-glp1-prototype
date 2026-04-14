@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <Nav />
       <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-20">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-16 md:py-20">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               Privacy Policy
             </h1>
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           </div>
         </section>
 
-        <article className="max-w-3xl mx-auto px-4 md:px-[60px] py-16 prose">
+        <article className="max-w-3xl mx-auto px-5 md:px-[60px] py-16 prose">
           <div className="bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 text-gray-700 leading-relaxed space-y-6">
             <p className="text-base">
               This Privacy Policy describes how Future Weight Loss

@@ -24,7 +24,8 @@ const MEDICATIONS = [
     mechanism:
       "Dual GIP/GLP-1 receptor agonist. Targets two pathways for greater effect.",
     injectionPrice: { first: 279, monthly: 399 },
-    oralPrice: { first: 279, monthly: 399 },
+    // Tirzepatide has no FDA-approved oral formulation.
+    oralPrice: null as { first: number; monthly: number } | null,
   },
 ];
 
@@ -105,7 +106,11 @@ export default function MedicationPage() {
                   onClick={() =>
                     setSelected({
                       type: med.type,
-                      form: selected?.form ?? "injection",
+                      // Tirzepatide has no oral option, so always injection.
+                      form:
+                        med.oralPrice && selected?.form === "oral"
+                          ? "oral"
+                          : "injection",
                     })
                   }
                 >
@@ -134,12 +139,22 @@ export default function MedicationPage() {
                         ${med.injectionPrice.first} first mo
                       </span>
                     </div>
-                    <div className="flex justify-between text-sm mt-1">
-                      <span className="text-gray-500">Oral tablet</span>
-                      <span className="font-semibold">
-                        ${med.oralPrice.first} first mo
-                      </span>
-                    </div>
+                    {med.oralPrice && (
+                      <div className="flex justify-between text-sm mt-1">
+                        <span className="text-gray-500">Oral tablet</span>
+                        <span className="font-semibold">
+                          ${med.oralPrice.first} first mo
+                        </span>
+                      </div>
+                    )}
+                    {!med.oralPrice && (
+                      <div className="flex justify-between text-sm mt-1">
+                        <span className="text-gray-500">Oral tablet</span>
+                        <span className="text-xs text-gray-400">
+                          Injection only
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
@@ -168,16 +183,25 @@ export default function MedicationPage() {
                   </span>
                 </button>
                 <button
-                  onClick={() => setSelected({ ...selected, form: "oral" })}
+                  onClick={() => {
+                    if (activeMed?.oralPrice) {
+                      setSelected({ ...selected, form: "oral" });
+                    }
+                  }}
+                  disabled={!activeMed?.oralPrice}
                   className={`px-4 py-3.5 rounded-lg border text-sm font-medium transition-all ${
-                    selected.form === "oral"
+                    !activeMed?.oralPrice
+                      ? "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
+                      : selected.form === "oral"
                       ? "border-black bg-black text-white"
                       : "border-gray-200 hover:border-gray-300"
                   }`}
                 >
                   <span className="block">Oral Tablet</span>
                   <span className="block text-xs mt-0.5 opacity-70">
-                    Daily dissolving tab
+                    {activeMed?.oralPrice
+                      ? "Daily dissolving tab"
+                      : "Not available for tirzepatide"}
                   </span>
                 </button>
               </div>
@@ -301,9 +325,12 @@ export default function MedicationPage() {
             <button
               onClick={handleContinue}
               disabled={!selected}
-              className="flex-1 bg-black text-white font-semibold py-3.5 rounded-lg hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+              className="flex-1 min-w-0 bg-black text-white font-semibold py-3.5 px-4 rounded-lg hover:opacity-80 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed text-sm sm:text-base truncate"
             >
-              Continue to Pharmacy Selection
+              <span className="sm:hidden">Continue</span>
+              <span className="hidden sm:inline">
+                Continue to Pharmacy Selection
+              </span>
             </button>
           </div>
         </div>

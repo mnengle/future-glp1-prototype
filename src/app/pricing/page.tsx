@@ -16,6 +16,7 @@ const PRICING = {
   },
   tirzepatide: {
     injection: { first: 279, monthly: 399 },
+    // No FDA-approved oral tirzepatide; fall back to injection pricing.
     oral: { first: 279, monthly: 399 },
   },
 };
@@ -139,7 +140,7 @@ export default function PricingPage() {
       <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28 text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
               Transparent Pricing
             </p>
@@ -160,7 +161,7 @@ export default function PricingPage() {
 
         {/* Interactive pricing calculator */}
         <section className="bg-warm-gray">
-          <div className="max-w-3xl mx-auto px-4 md:px-[60px] py-16 md:py-20">
+          <div className="max-w-3xl mx-auto px-5 md:px-[60px] py-16 md:py-20">
             <div className="bg-white rounded-3xl border border-gray-200/60 p-6 md:p-10 shadow-sm">
               {/* Medication toggle */}
               <div>
@@ -197,7 +198,10 @@ export default function PricingPage() {
                     </p>
                   </button>
                   <button
-                    onClick={() => setMedication("tirzepatide")}
+                    onClick={() => {
+                      setMedication("tirzepatide");
+                      if (form === "oral") setForm("injection");
+                    }}
                     className={`p-5 rounded-xl border-2 text-left transition-all ${
                       medication === "tirzepatide"
                         ? "border-black bg-black text-white"
@@ -249,16 +253,18 @@ export default function PricingPage() {
                   </button>
                   <button
                     onClick={() => setForm("oral")}
-                    disabled={tier === "bundle"}
+                    disabled={medication === "tirzepatide"}
                     className={`p-4 rounded-xl border-2 text-left transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
-                      form === "oral"
+                      form === "oral" && medication !== "tirzepatide"
                         ? "border-black"
                         : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     <p className="font-semibold text-sm">Oral Tablet</p>
                     <p className="text-xs text-gray-500 mt-1">
-                      Daily dissolving tab
+                      {medication === "tirzepatide"
+                        ? "Not available for tirzepatide"
+                        : "Daily dissolving tab"}
                     </p>
                   </button>
                 </div>
@@ -409,7 +415,7 @@ export default function PricingPage() {
 
         {/* Comparison table */}
         <section className="bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight">
                 How we compare
@@ -610,7 +616,7 @@ export default function PricingPage() {
 
         {/* FAQs */}
         <section className="bg-warm-gray">
-          <div className="max-w-3xl mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-3xl mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
               Pricing FAQs
             </h2>
