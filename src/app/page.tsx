@@ -107,41 +107,40 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative bg-black text-white overflow-hidden">
+        <section className="relative bg-black text-white overflow-hidden min-h-[80vh] flex items-center">
           <div className="absolute inset-0">
             <img
               src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_3840/f_auto/q_90/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg"
               alt="Strength training"
-              className="w-full h-full object-cover opacity-40"
+              className="w-full h-full object-cover opacity-60"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
           </div>
-          <div className="absolute inset-0 opacity-15">
-            <div className="future-gradient absolute inset-0" />
-          </div>
-          <div className="relative max-w-[1440px] mx-auto px-4 md:px-[60px] py-24 md:py-36">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
+
+          <div className="relative w-full max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-32">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-6">
                 Medical Weight Loss + Coaching
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.02]">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
                 Lose the fat.
                 <br />
                 Keep the
                 <br />
                 <span className="future-gradient-text">muscle.</span>
               </h1>
-              <p className="text-lg md:text-xl xl:text-2xl text-white/70 mt-8 max-w-xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/80 mt-10 max-w-xl leading-relaxed">
                 Clinically proven GLP-1 medications, paired with expert coaching
-                and resistance training. The research is clear: medication alone
-                isn&apos;t enough.
+                and resistance training. Because medication alone isn&apos;t
+                enough.
               </p>
 
               <div className="mt-10">
-                <p className="text-sm font-medium text-white/50 mb-4">
+                <p className="text-sm font-medium text-white/60 mb-4">
                   How much weight do you want to lose?
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
                   {goals.map((goal) => (
                     <Link
                       key={goal.value}
@@ -156,7 +155,7 @@ export default function Home() {
 
               <Link
                 href="/assessment"
-                className="inline-block mt-8 bg-white text-black text-base font-semibold px-10 py-3.5 rounded-lg hover:opacity-80 transition-opacity"
+                className="inline-block mt-8 bg-white text-black text-base font-semibold px-10 py-4 rounded-lg hover:opacity-80 transition-opacity"
               >
                 Start Your Assessment
               </Link>
