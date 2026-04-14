@@ -173,30 +173,49 @@ export default function Home() {
 
         {/* Stat bar */}
         <section className="bg-white border-b border-gray-200/60">
-          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-8 flex flex-wrap items-center justify-center gap-8 md:gap-16 text-center">
-            <div>
-              <p className="text-2xl font-bold text-hot-pink">Up to 40%</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                Of weight lost on GLP-1s is lean mass
-              </p>
+          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-10">
+            <p className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center mb-6">
+              What the research shows
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 text-center max-w-4xl mx-auto">
+              <div className="md:border-r md:border-gray-200 md:pr-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-hot-pink mb-1">
+                  The Problem
+                </p>
+                <p className="text-2xl md:text-3xl font-bold text-black">
+                  ~40% muscle loss
+                </p>
+                <p className="text-xs text-gray-500 mt-2 leading-snug">
+                  Of the weight patients lose on GLP-1s alone, up to 40% comes
+                  from lean body mass, not fat.
+                </p>
+              </div>
+              <div className="md:border-r md:border-gray-200 md:pr-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-hot-pink mb-1">
+                  The Risk
+                </p>
+                <p className="text-2xl md:text-3xl font-bold text-black">
+                  2/3 weight regained
+                </p>
+                <p className="text-xs text-gray-500 mt-2 leading-snug">
+                  Within 1 year of stopping medication, most patients regain
+                  two-thirds of what they lost, mostly as fat.
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-sage mb-1">
+                  The Fix
+                </p>
+                <p className="text-2xl md:text-3xl font-bold text-black">
+                  90%+ preserved
+                </p>
+                <p className="text-xs text-gray-500 mt-2 leading-snug">
+                  With resistance training and adequate protein, patients
+                  preserve 90% or more of their muscle while losing fat.
+                </p>
+              </div>
             </div>
-            <div className="w-px h-8 bg-gray-200 hidden md:block" />
-            <div>
-              <p className="text-2xl font-bold text-hot-pink">2/3 regained</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                Within 1 year of stopping medication
-              </p>
-            </div>
-            <div className="w-px h-8 bg-gray-200 hidden md:block" />
-            <div>
-              <p className="text-2xl font-bold text-sage">90%+ preserved</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-                With resistance training and protein
-              </p>
-            </div>
-          </div>
-          <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] pb-4 text-center">
-            <p className="text-[10px] text-gray-400">
+            <p className="text-[10px] text-gray-400 mt-6 text-center max-w-3xl mx-auto">
               Sources: STEP 1 body composition substudy (Wilding et al., NEJM
               2021); STEP 1 extension (Wilding et al., Diabetes, Obesity and
               Metabolism 2022); ISSN position on protein intake during weight
@@ -401,15 +420,13 @@ export default function Home() {
           <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
+                <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">
                   Training That Adapts To You
                 </p>
-                <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight">
-                  Your body on GLP-1 is different.
-                  <br />
-                  Your training should be too.
+                <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight leading-tight">
+                  Your body on GLP-1 is different. Your training should be too.
                 </h2>
-                <p className="text-gray-500 mt-4 text-lg leading-relaxed">
+                <p className="text-gray-500 mt-5 text-lg leading-relaxed">
                   Appetite shifts. Energy changes. Some days you&apos;ll feel
                   great. Others you&apos;ll feel flat. Your Future coach builds
                   a program around these realities and adjusts it week by
