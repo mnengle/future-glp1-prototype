@@ -6,7 +6,7 @@ import { Nav } from "@/components/nav";
 import { useAssessmentStore } from "@/lib/assessment-store";
 
 const STATUSES = [
-  { key: "submitted", label: "Assessment submitted", time: "Just now" },
+  { key: "submitted", label: "Assessment submitted to SteadyMD", time: "Just now" },
   { key: "reviewing", label: "Provider assigned", time: "~2 min" },
   { key: "in_review", label: "Under clinical review", time: "~5 min" },
   { key: "approved", label: "Treatment approved", time: "" },
@@ -14,10 +14,51 @@ const STATUSES = [
 
 export default function ReviewPage() {
   const router = useRouter();
-  const { medication } = useAssessmentStore();
+  const { data, medication, pharmacy, steadymd, setSteadyMDIds } =
+    useAssessmentStore();
   const [currentStatus, setCurrentStatus] = useState(0);
+  const [apiError, setApiError] = useState<string | null>(null);
 
-  // Simulate async provider review
+  // Actually POST to /api/assessment/submit on mount
+  useEffect(() => {
+    let cancelled = false;
+    async function submitToSteadyMD() {
+      // Skip if we already submitted (coming back to this page)
+      if (steadymd.patientGuid) return;
+      // Skip if required data missing (user navigated here directly)
+      if (!data.patientInfo || !medication || !pharmacy) return;
+
+      try {
+        const res = await fetch("/api/assessment/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            assessment: data,
+            medication,
+            pharmacy,
+          }),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (cancelled) return;
+        setSteadyMDIds({
+          patientGuid: json.patientGuid,
+          episodeGuid: json.episodeGuid,
+          consultGuid: json.consultGuid,
+          demo: json.demo,
+        });
+      } catch (err) {
+        if (cancelled) return;
+        setApiError(err instanceof Error ? err.message : "Submission failed");
+      }
+    }
+    submitToSteadyMD();
+    return () => {
+      cancelled = true;
+    };
+  }, [data, medication, pharmacy, steadymd.patientGuid, setSteadyMDIds]);
+
+  // Simulate async provider review animation (real webhook would drive this)
   useEffect(() => {
     const timers = [
       setTimeout(() => setCurrentStatus(1), 3000),
@@ -129,6 +170,21 @@ export default function ReviewPage() {
                 We&apos;ll send you a magic link email when your results are
                 ready.
               </p>
+
+              {(steadymd.patientGuid || apiError) && (
+                <div className="mt-4 text-[10px] text-gray-400 font-mono">
+                  {apiError ? (
+                    <span className="text-hot-pink">
+                      API error: {apiError}
+                    </span>
+                  ) : (
+                    <>
+                      {steadymd.demo ? "Demo mode · " : "Live · "}
+                      patient {steadymd.patientGuid?.slice(0, 12)}…
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           ) : (
             /* Approved state */

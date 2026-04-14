@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Nav } from "@/components/nav";
 import { useAssessmentStore } from "@/lib/assessment-store";
@@ -40,16 +40,49 @@ const MOCK_PHARMACIES: PharmacySelection[] = [
 
 export default function PharmacyPage() {
   const router = useRouter();
-  const { setPharmacy } = useAssessmentStore();
+  const { data, setPharmacy } = useAssessmentStore();
   const [selected, setSelected] = useState<PharmacySelection>(PARTNER_PHARMACY);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] =
+    useState<PharmacySelection[]>(MOCK_PHARMACIES);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const filteredPharmacies = MOCK_PHARMACIES.filter(
-    (p) =>
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.address.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Hit /api/pharmacy/search (which proxies SteadyMD) with debounce
+  useEffect(() => {
+    if (!showSearch) return;
+    const state = data.patientInfo?.state ?? "CA";
+    const timer = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const params = new URLSearchParams({ query: searchQuery, state });
+        const res = await fetch(`/api/pharmacy/search?${params}`);
+        if (!res.ok) throw new Error("search failed");
+        const json = await res.json();
+        const results = (json.results ?? []).map((r: Record<string, string>) => ({
+          ncpdpId: r.ncpdp_id,
+          name: r.name,
+          address: `${r.address}, ${r.city}, ${r.state} ${r.zip}`,
+          phone: r.phone,
+          isPartner: false,
+        }));
+        setSearchResults(results.length ? results : MOCK_PHARMACIES);
+      } catch {
+        setSearchResults(MOCK_PHARMACIES);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery, showSearch, data.patientInfo?.state]);
+
+  const filteredPharmacies = searchQuery
+    ? searchResults
+    : MOCK_PHARMACIES.filter(
+        (p) =>
+          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.address.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
   function handleContinue() {
     setPharmacy(selected);
@@ -153,6 +186,11 @@ export default function PharmacyPage() {
                 placeholder="Search by name, address, or zip code..."
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-cool-gray text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
               />
+              {isSearching && (
+                <p className="text-xs text-gray-400 mt-2">
+                  Searching SteadyMD pharmacy network…
+                </p>
+              )}
               <div className="mt-3 space-y-2">
                 {filteredPharmacies.map((pharmacy) => (
                   <div
