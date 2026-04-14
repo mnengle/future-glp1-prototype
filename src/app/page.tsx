@@ -61,8 +61,8 @@ const members = [
     city: "Austin, TX",
     accent: "coral",
     weightLost: "-28 lbs",
-    fatLost: "-27.3 lbs",
-    musclePreserved: "97%",
+    fatLost: "-25.2 lbs",
+    musclePreserved: "90%",
     program: "Semaglutide + Coaching",
     quote:
       "I didn't just want to be skinny. I wanted to be strong. My coach programmed lifts around how I was feeling on the med.",
@@ -76,8 +76,8 @@ const members = [
     city: "Chicago, IL",
     accent: "sage",
     weightLost: "-46 lbs",
-    fatLost: "-43.2 lbs",
-    musclePreserved: "94%",
+    fatLost: "-39.1 lbs",
+    musclePreserved: "85%",
     program: "Tirzepatide + Coaching",
     quote:
       "I've done GLP-1s before and always felt weak after. This time I came out stronger than I started.",
@@ -91,8 +91,8 @@ const members = [
     city: "Denver, CO",
     accent: "purple",
     weightLost: "-35 lbs",
-    fatLost: "-35.2 lbs",
-    musclePreserved: "100%",
+    fatLost: "-32.6 lbs",
+    musclePreserved: "93%",
     program: "Tirzepatide + Coaching",
     quote:
       "The med killed my appetite. Coaching kept me eating enough protein. Biggest difference of my life.",

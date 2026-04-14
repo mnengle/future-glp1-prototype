@@ -66,7 +66,7 @@ const COMPETITOR_COMPARISON = [
   {
     feature: "Month-to-month (no prepay)",
     future: true,
-    hims: false,
+    hims: true,
     ro: false,
     henry: true,
     mochi: true,
@@ -470,7 +470,7 @@ export default function PricingPage() {
                             />
                           </svg>
                         ) : (
-                          <span className="text-gray-300">·</span>
+                          <span className="text-gray-400 text-xs">No</span>
                         );
                       }
                       return (
@@ -534,6 +534,7 @@ export default function PricingPage() {
             <div className="mt-12 space-y-3">
               {FAQS.map((faq, i) => {
                 const isOpen = openFaq === i;
+                const panelId = `pricing-faq-panel-${i}`;
                 return (
                   <div
                     key={i}
@@ -541,6 +542,8 @@ export default function PricingPage() {
                   >
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : i)}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
                       className="w-full flex items-center justify-between p-5 text-left"
                     >
                       <span className="font-semibold pr-4">{faq.q}</span>
@@ -561,7 +564,10 @@ export default function PricingPage() {
                       </svg>
                     </button>
                     {isOpen && (
-                      <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                      <div
+                        id={panelId}
+                        className="px-5 pb-5 text-sm text-gray-600 leading-relaxed"
+                      >
                         {faq.a}
                       </div>
                     )}

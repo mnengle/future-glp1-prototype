@@ -1,13 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FutureLogo } from "./logo";
 
 export function Nav() {
-  const pathname = usePathname();
-  const isLanding = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -15,6 +12,7 @@ export function Nav() {
       <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] flex items-center justify-between h-16">
         <Link
           href="/"
+          aria-label="Future — Home"
           className="flex items-center text-black"
           onClick={() => setMenuOpen(false)}
         >
@@ -35,28 +33,27 @@ export function Nav() {
           >
             Pricing
           </Link>
-          {isLanding ? (
-            <Link
-              href="/assessment"
-              className="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:opacity-80 transition-opacity whitespace-nowrap"
-            >
-              Get Started
-            </Link>
-          ) : (
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium text-gray-600 hover:text-black transition-colors whitespace-nowrap"
-            >
-              My Account
-            </Link>
-          )}
+          <Link
+            href="/faq"
+            className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/assessment"
+            className="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-lg hover:opacity-80 transition-opacity whitespace-nowrap"
+          >
+            Get Started
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <svg
             className="w-5 h-5"
@@ -85,7 +82,10 @@ export function Nav() {
 
       {/* Mobile menu drawer */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-200/60 bg-white">
+        <div
+          id="mobile-menu"
+          className="md:hidden border-t border-gray-200/60 bg-white"
+        >
           <div className="px-4 py-4 flex flex-col gap-1">
             <Link
               href="/how-it-works"
@@ -101,15 +101,13 @@ export function Nav() {
             >
               Pricing
             </Link>
-            {!isLanding && (
-              <Link
-                href="/dashboard"
-                onClick={() => setMenuOpen(false)}
-                className="px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100"
-              >
-                My Account
-              </Link>
-            )}
+            <Link
+              href="/faq"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100"
+            >
+              FAQ
+            </Link>
             <Link
               href="/assessment"
               onClick={() => setMenuOpen(false)}

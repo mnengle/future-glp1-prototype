@@ -45,11 +45,18 @@ export function StepPersonalInfo({ onNext }: { onNext: () => void }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label
+            htmlFor="first-name"
+            className="block text-sm font-medium text-gray-700 mb-1.5"
+          >
             First Name
           </label>
           <input
             type="text"
+            id="first-name"
+            name="firstName"
+            autoComplete="given-name"
+            required
             value={info.firstName}
             onChange={(e) => setInfo({ ...info, firstName: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
@@ -57,11 +64,18 @@ export function StepPersonalInfo({ onNext }: { onNext: () => void }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label
+            htmlFor="last-name"
+            className="block text-sm font-medium text-gray-700 mb-1.5"
+          >
             Last Name
           </label>
           <input
             type="text"
+            id="last-name"
+            name="lastName"
+            autoComplete="family-name"
+            required
             value={info.lastName}
             onChange={(e) => setInfo({ ...info, lastName: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
@@ -71,11 +85,18 @@ export function StepPersonalInfo({ onNext }: { onNext: () => void }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 mb-1.5"
+        >
           Email
         </label>
         <input
           type="email"
+          id="email"
+          name="email"
+          autoComplete="email"
+          required
           value={info.email}
           onChange={(e) => setInfo({ ...info, email: e.target.value })}
           className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
@@ -84,11 +105,18 @@ export function StepPersonalInfo({ onNext }: { onNext: () => void }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label
+          htmlFor="phone"
+          className="block text-sm font-medium text-gray-700 mb-1.5"
+        >
           Phone Number
         </label>
         <input
           type="tel"
+          id="phone"
+          name="phone"
+          autoComplete="tel"
+          required
           value={info.phone}
           onChange={(e) => setInfo({ ...info, phone: e.target.value })}
           className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
@@ -98,29 +126,43 @@ export function StepPersonalInfo({ onNext }: { onNext: () => void }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label
+            htmlFor="dob"
+            className="block text-sm font-medium text-gray-700 mb-1.5"
+          >
             Date of Birth
           </label>
           <input
             type="date"
+            id="dob"
+            name="dob"
+            autoComplete="bday"
+            required
             value={info.dateOfBirth}
             onChange={(e) => setInfo({ ...info, dateOfBirth: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label
+            htmlFor="state"
+            className="block text-sm font-medium text-gray-700 mb-1.5"
+          >
             State
           </label>
           <select
+            id="state"
+            name="state"
+            autoComplete="address-level1"
+            required
             value={info.state}
             onChange={(e) => setInfo({ ...info, state: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-black/10 focus:border-black transition-colors"
           >
             <option value="">Select your state</option>
             {US_STATES.map((s) => (
-              <option key={s} value={s}>
-                {s}
+              <option key={s.code} value={s.code}>
+                {s.name}
               </option>
             ))}
           </select>

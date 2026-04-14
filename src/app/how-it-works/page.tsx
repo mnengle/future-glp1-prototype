@@ -216,6 +216,7 @@ export default function HowItWorksPage() {
             <div className="mt-12 space-y-3">
               {FAQS.map((faq, i) => {
                 const isOpen = openFaq === i;
+                const panelId = `hiw-faq-panel-${i}`;
                 return (
                   <div
                     key={i}
@@ -223,6 +224,8 @@ export default function HowItWorksPage() {
                   >
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : i)}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
                       className="w-full flex items-center justify-between p-5 text-left"
                     >
                       <span className="font-semibold pr-4">{faq.q}</span>
@@ -243,7 +246,10 @@ export default function HowItWorksPage() {
                       </svg>
                     </button>
                     {isOpen && (
-                      <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+                      <div
+                        id={panelId}
+                        className="px-5 pb-5 text-sm text-gray-600 leading-relaxed"
+                      >
                         {faq.a}
                       </div>
                     )}
