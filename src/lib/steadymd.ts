@@ -1,4 +1,8 @@
-const STEADYMD_API_BASE = process.env.STEADYMD_API_BASE ?? "https://api.steadymd.com";
+// Base URL for SteadyMD Partner API. The public docs reference
+// api.steadymd.com but that doesn't resolve. partner-api.steadymd.com
+// is the host SteadyMD actually routes requests through.
+const STEADYMD_API_BASE =
+  process.env.STEADYMD_API_BASE ?? "https://partner-api.steadymd.com";
 const STEADYMD_API_KEY = process.env.STEADYMD_API_KEY ?? "";
 
 async function steadymdFetch(path: string, options: RequestInit = {}) {
