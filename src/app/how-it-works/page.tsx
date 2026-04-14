@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">

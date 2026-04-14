@@ -20,10 +20,17 @@ const PRICING = {
   },
 };
 
-// With Future coaching bundled: flat $499/mo regardless of medication.
-// Coaching alone is normally $199/mo, so bundle saves the patient money
-// on the tirzepatide path and positions Future as premium on sema.
-const BUNDLE_PRICE = { first: 299, monthly: 499 };
+// Coaching is $199/mo normally. Bundled with the medication program,
+// patients save $49/mo on the combined price. Works out to a modest
+// discount that still respects our margins on both sides.
+const COACHING_MONTHLY = 199;
+const BUNDLE_DISCOUNT = 49;
+function bundlePrice(medMonthly: number, medFirst: number) {
+  return {
+    first: medFirst + COACHING_MONTHLY - BUNDLE_DISCOUNT,
+    monthly: medMonthly + COACHING_MONTHLY - BUNDLE_DISCOUNT,
+  };
+}
 
 const INCLUDES = [
   "Medication (3-month supply available)",
@@ -123,12 +130,13 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const medPrice = PRICING[medication][form];
-  const price = tier === "bundle" ? BUNDLE_PRICE : medPrice;
+  const price =
+    tier === "bundle" ? bundlePrice(medPrice.monthly, medPrice.first) : medPrice;
 
   return (
     <>
       <Nav />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
@@ -325,7 +333,7 @@ export default function PricingPage() {
                         GLP-1 medication + provider
                       </span>
                       <span className="text-xs text-gray-500">
-                        ${medPrice.monthly}/mo value
+                        ${medPrice.monthly}/mo
                       </span>
                     </div>
                     <div className="flex items-baseline justify-between">
@@ -333,15 +341,15 @@ export default function PricingPage() {
                         Future coach + resistance training
                       </span>
                       <span className="text-xs text-gray-500">
-                        $199/mo value
+                        ${COACHING_MONTHLY}/mo
                       </span>
                     </div>
-                    <div className="flex items-baseline justify-between pt-1">
-                      <span className="text-xs font-semibold text-sage">
-                        You save
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-xs text-gray-400">
+                        Bundle discount
                       </span>
-                      <span className="text-xs font-bold text-sage">
-                        ${medPrice.monthly + 199 - 499}/mo
+                      <span className="text-xs font-semibold text-sage">
+                        -${BUNDLE_DISCOUNT}/mo
                       </span>
                     </div>
                   </div>
@@ -411,7 +419,83 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto overflow-x-auto">
+            {/* Mobile: stacked cards per competitor */}
+            <div className="md:hidden space-y-4 max-w-md mx-auto">
+              {[
+                { key: "future", label: "Future", highlight: true },
+                { key: "hims", label: "Hims", highlight: false },
+                { key: "ro", label: "Ro", highlight: false },
+                { key: "henry", label: "Henry", highlight: false },
+                { key: "mochi", label: "Mochi", highlight: false },
+              ].map((competitor) => (
+                <div
+                  key={competitor.key}
+                  className={`rounded-2xl border p-5 ${
+                    competitor.highlight
+                      ? "border-black bg-black text-white"
+                      : "border-gray-200 bg-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-lg font-bold">{competitor.label}</h3>
+                    {competitor.highlight && (
+                      <span className="text-[10px] bg-white text-black uppercase tracking-wider px-2 py-0.5 rounded font-bold">
+                        Coaching
+                      </span>
+                    )}
+                  </div>
+                  <dl className="space-y-2 text-sm">
+                    {COMPETITOR_COMPARISON.map((row, i) => {
+                      const value = row[
+                        competitor.key as keyof typeof row
+                      ] as string | boolean;
+                      return (
+                        <div
+                          key={i}
+                          className={`flex items-center justify-between py-1.5 border-b last:border-b-0 ${
+                            competitor.highlight
+                              ? "border-white/10"
+                              : "border-gray-100"
+                          }`}
+                        >
+                          <dt
+                            className={
+                              competitor.highlight
+                                ? "text-white/70"
+                                : "text-gray-500"
+                            }
+                          >
+                            {row.feature}
+                          </dt>
+                          <dd className="font-medium text-right">
+                            {typeof value === "boolean" ? (
+                              value ? (
+                                <span className="text-sage">Yes</span>
+                              ) : (
+                                <span
+                                  className={
+                                    competitor.highlight
+                                      ? "text-white/30"
+                                      : "text-gray-400"
+                                  }
+                                >
+                                  No
+                                </span>
+                              )
+                            ) : (
+                              value
+                            )}
+                          </dd>
+                        </div>
+                      );
+                    })}
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table */}
+            <div className="hidden md:block max-w-4xl mx-auto overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-200">
@@ -516,9 +600,9 @@ export default function PricingPage() {
               </table>
               <p className="text-xs text-gray-400 text-center mt-6 max-w-2xl mx-auto leading-relaxed">
                 Competitor pricing compiled from public pricing pages and
-                third-party review aggregators, April 2026. Prices change
-                frequently. Some competitors require multi-month prepayment to
-                access the lowest advertised rates.
+                third-party review aggregators. Last verified April 13, 2026.
+                Prices change frequently. Some competitors require multi-month
+                prepayment to access the lowest advertised rates.
               </p>
             </div>
           </div>

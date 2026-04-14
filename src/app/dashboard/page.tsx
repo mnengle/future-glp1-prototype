@@ -37,7 +37,7 @@ export default function DashboardPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1 bg-warm-gray">
+      <main id="main-content" className="flex-1 bg-warm-gray">
         <div className="max-w-3xl mx-auto px-4 py-8 md:py-14">
           {/* Header */}
           <div className="mb-8">

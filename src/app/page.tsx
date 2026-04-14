@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { JsonLd, organizationSchema } from "@/components/json-ld";
 
 const goals = [
   { label: "1 to 20 lbs", value: "1-20" },
@@ -104,13 +105,20 @@ const members = [
 export default function Home() {
   return (
     <>
+      <JsonLd data={organizationSchema} />
       <Nav />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative bg-black text-white overflow-hidden min-h-[80vh] flex items-center">
           <div className="absolute inset-0">
             <img
-              src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_3840/f_auto/q_90/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg"
+              src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_85/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg"
+              srcSet="
+                https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_800/f_auto/q_85/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg 800w,
+                https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_85/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg 1600w,
+                https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_2400/f_auto/q_85/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg 2400w
+              "
+              sizes="100vw"
               alt="Strength training"
               className="w-full h-full object-cover opacity-60"
             />
@@ -120,10 +128,10 @@ export default function Home() {
 
           <div className="relative w-full max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-32">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-6">
+              <p className="text-sm font-semibold uppercase tracking-wider text-white/70 mb-6">
                 Medical Weight Loss + Coaching
               </p>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
                 Lose the fat.
                 <br />
                 Keep the
@@ -308,6 +316,7 @@ export default function Home() {
                       <img
                         src={member.beforeImg}
                         alt={`${member.name} before`}
+                        loading="lazy"
                         className="w-full h-full object-contain bg-white"
                       />
                       <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
@@ -318,6 +327,7 @@ export default function Home() {
                       <img
                         src={member.afterImg}
                         alt={`${member.name} after`}
+                        loading="lazy"
                         className="w-full h-full object-contain bg-white"
                       />
                       <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
@@ -378,10 +388,10 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-[10px] text-gray-400 text-center mt-10 max-w-lg mx-auto leading-relaxed">
+            <p className="text-[10px] text-gray-400 text-center mt-10 max-w-xl mx-auto leading-relaxed">
               Individual results vary. Outcomes reflect members who combined
               GLP-1 medication with Future coaching and resistance training.
-              Photos are staging placeholders.
+              Names changed to protect privacy.
             </p>
           </div>
         </section>
@@ -453,6 +463,7 @@ export default function Home() {
                 <img
                   src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_90/v1/https://future.co/images/pro-homepage/fitness-roadmap/pro-roadmap-desktop-bg.jpg"
                   alt="Strength training"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -511,8 +522,8 @@ export default function Home() {
                 See If You Qualify
               </Link>
               <p className="text-xs text-gray-400 mt-3">
-                From $179 first month. Or bundle with Future coaching for
-                $499/month flat.
+                From $179 first month. Add Future coaching for $199/month, or
+                bundle both and save $49/month.
               </p>
             </div>
 
@@ -535,7 +546,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
                 Build muscle while you lose weight.
               </h2>
-              <p className="text-lg text-white/60 mt-4 leading-relaxed text-center max-w-2xl mx-auto">
+              <p className="text-lg text-white/75 mt-4 leading-relaxed text-center max-w-2xl mx-auto">
                 Leading medical organizations recommend combining resistance
                 training with obesity pharmacotherapy to preserve lean mass.
                 Your Future coach makes sure it actually happens.
@@ -544,7 +555,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Resistance training</h3>
-                  <p className="text-sm text-white/50 mt-2 leading-relaxed">
+                  <p className="text-sm text-white/70 mt-2 leading-relaxed">
                     Personalized strength programs designed to preserve and
                     build lean mass during weight loss. Adapted weekly based on
                     your progress and energy levels.
@@ -552,7 +563,7 @@ export default function Home() {
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Protein optimization</h3>
-                  <p className="text-sm text-white/50 mt-2 leading-relaxed">
+                  <p className="text-sm text-white/70 mt-2 leading-relaxed">
                     Research supports 1.2 to 2.0 g/kg/day protein intake during
                     active weight loss with resistance training. Your coach
                     dials in your macros.
@@ -560,7 +571,7 @@ export default function Home() {
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                   <h3 className="font-bold text-lg">Lasting results</h3>
-                  <p className="text-sm text-white/50 mt-2 leading-relaxed">
+                  <p className="text-sm text-white/70 mt-2 leading-relaxed">
                     A Lancet-family RCT of exercise combined with liraglutide
                     maintained weight loss one year after stopping medication,
                     unlike pharmacotherapy alone.

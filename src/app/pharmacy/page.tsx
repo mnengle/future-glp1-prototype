@@ -92,7 +92,7 @@ export default function PharmacyPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1 bg-warm-gray">
+      <main id="main-content" className="flex-1 bg-warm-gray">
         <div className="max-w-xl mx-auto px-4 py-8 md:py-14">
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">

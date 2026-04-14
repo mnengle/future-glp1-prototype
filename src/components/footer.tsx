@@ -15,7 +15,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">
               Program
             </h4>
             <div className="flex flex-col gap-3">
@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">
               Support
             </h4>
             <div className="flex flex-col gap-3">
@@ -61,7 +61,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white/50 mb-4">
               Legal
             </h4>
             <div className="flex flex-col gap-3">
@@ -81,11 +81,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex items-center justify-between">
-          <p className="text-xs text-white/40">
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row items-center md:justify-between gap-2 text-center md:text-left">
+          <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} Future. All rights reserved.
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/50">
             Medical services provided by licensed physicians via SteadyMD.
           </p>
         </div>

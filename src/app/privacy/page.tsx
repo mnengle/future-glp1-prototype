@@ -2,7 +2,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
 export const metadata = {
-  title: "Privacy Policy | Future Weight Loss",
+  title: { absolute: "Privacy Policy | Future Weight Loss" },
   description:
     "How Future Weight Loss collects, uses, and protects your personal and health information.",
 };
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1 bg-warm-gray">
+      <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-20">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">

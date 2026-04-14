@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { JsonLd } from "@/components/json-ld";
 
 const FAQ_SECTIONS = [
   {
@@ -87,10 +88,23 @@ const FAQ_SECTIONS = [
 export default function FaqPage() {
   const [openItem, setOpenItem] = useState<string | null>("0-0");
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_SECTIONS.flatMap((section) =>
+      section.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      }))
+    ),
+  };
+
   return (
     <>
+      <JsonLd data={faqSchema} />
       <Nav />
-      <main className="flex-1 bg-warm-gray">
+      <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-24 text-center">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">

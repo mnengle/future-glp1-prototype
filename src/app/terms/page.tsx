@@ -2,7 +2,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
 export const metadata = {
-  title: "Terms of Service | Future Weight Loss",
+  title: { absolute: "Terms of Service | Future Weight Loss" },
   description:
     "The terms that govern your use of Future Weight Loss's medical weight loss program.",
 };
@@ -11,7 +11,7 @@ export default function TermsPage() {
   return (
     <>
       <Nav />
-      <main className="flex-1 bg-warm-gray">
+      <main id="main-content" className="flex-1 bg-warm-gray">
         <section className="bg-black text-white">
           <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-16 md:py-20">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
