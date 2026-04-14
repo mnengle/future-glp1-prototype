@@ -33,6 +33,9 @@ const DOSAGES: Record<string, string[]> = {
   tirzepatide: ["2.5mg (starting)", "5mg", "7.5mg", "10mg", "12.5mg", "15mg"],
 };
 
+const COACHING_MONTHLY = 199;
+const BUNDLE_DISCOUNT = 49;
+
 export default function MedicationPage() {
   const router = useRouter();
   const { setMedication } = useAssessmentStore();
@@ -40,6 +43,7 @@ export default function MedicationPage() {
     type: "semaglutide" | "tirzepatide";
     form: "injection" | "oral";
   } | null>(null);
+  const [withCoaching, setWithCoaching] = useState(false);
 
   const activeMed = MEDICATIONS.find((m) => m.type === selected?.type);
   const price = activeMed
@@ -48,6 +52,17 @@ export default function MedicationPage() {
       : activeMed.injectionPrice
     : null;
 
+  const bundledFirst = price
+    ? withCoaching
+      ? price.first + COACHING_MONTHLY - BUNDLE_DISCOUNT
+      : price.first
+    : 0;
+  const bundledMonthly = price
+    ? withCoaching
+      ? price.monthly + COACHING_MONTHLY - BUNDLE_DISCOUNT
+      : price.monthly
+    : 0;
+
   function handleContinue() {
     if (!selected) return;
     const dosages = DOSAGES[selected.type];
@@ -55,6 +70,7 @@ export default function MedicationPage() {
       type: selected.type,
       form: selected.form,
       dosage: dosages[0],
+      withCoaching,
     };
     setMedication(sel);
     router.push("/pharmacy");
@@ -166,20 +182,106 @@ export default function MedicationPage() {
                 </button>
               </div>
 
+              {/* Add Future Coaching */}
+              <div className="mt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">
+                  Add Future coaching?
+                </h3>
+                <button
+                  onClick={() => setWithCoaching(!withCoaching)}
+                  aria-pressed={withCoaching}
+                  className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+                    withCoaching
+                      ? "border-black bg-black text-white"
+                      : "border-gray-200 bg-white hover:border-gray-300"
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center mt-0.5 ${
+                        withCoaching
+                          ? "border-white bg-white"
+                          : "border-gray-300"
+                      }`}
+                    >
+                      {withCoaching && (
+                        <svg
+                          className="w-3 h-3 text-black"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold">
+                          Include Future Coaching
+                        </span>
+                        <span
+                          className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                            withCoaching
+                              ? "bg-sage text-white"
+                              : "bg-sage/10 text-sage"
+                          }`}
+                        >
+                          Save $49/mo
+                        </span>
+                      </div>
+                      <p
+                        className={`text-xs mt-1 ${
+                          withCoaching ? "text-white/70" : "text-gray-500"
+                        }`}
+                      >
+                        Resistance training + nutrition coaching to preserve
+                        muscle while you lose fat. ${COACHING_MONTHLY}/mo
+                        standalone, bundled here for $
+                        {COACHING_MONTHLY - BUNDLE_DISCOUNT}/mo.
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+
               {price && (
                 <div className="mt-4 p-4 bg-cool-gray rounded-xl">
                   <div className="flex justify-between items-baseline">
                     <span className="text-sm text-gray-500">First month</span>
-                    <span className="text-2xl font-bold">${price.first}</span>
+                    <span className="text-2xl font-bold">
+                      ${bundledFirst}
+                    </span>
                   </div>
                   <div className="flex justify-between items-baseline mt-1">
                     <span className="text-sm text-gray-500">
                       Then monthly
                     </span>
                     <span className="text-base font-semibold text-gray-600">
-                      ${price.monthly}/mo
+                      ${bundledMonthly}/mo
                     </span>
                   </div>
+                  {withCoaching && (
+                    <div className="mt-3 pt-3 border-t border-gray-200 space-y-1">
+                      <div className="flex justify-between text-xs text-gray-500">
+                        <span>GLP-1 medication + provider</span>
+                        <span>${price.monthly}/mo</span>
+                      </div>
+                      <div className="flex justify-between text-xs text-gray-500">
+                        <span>Future coach + training</span>
+                        <span>${COACHING_MONTHLY}/mo</span>
+                      </div>
+                      <div className="flex justify-between text-xs font-semibold text-sage">
+                        <span>Bundle discount</span>
+                        <span>-${BUNDLE_DISCOUNT}/mo</span>
+                      </div>
+                    </div>
+                  )}
                   <p className="text-xs text-gray-400 mt-2">
                     Includes medication, provider visits, and shipping.
                     HSA/FSA eligible.

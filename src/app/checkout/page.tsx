@@ -16,6 +16,9 @@ const PRICES: Record<string, Record<string, { first: number; monthly: number }>>
   },
 };
 
+const COACHING_MONTHLY = 199;
+const BUNDLE_DISCOUNT = 49;
+
 export default function CheckoutPage() {
   const router = useRouter();
   const { medication, pharmacy } = useAssessmentStore();
@@ -24,8 +27,19 @@ export default function CheckoutPage() {
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
 
-  const price = medication
+  const medPrice = medication
     ? PRICES[medication.type]?.[medication.form]
+    : null;
+  const withCoaching = medication?.withCoaching === true;
+  const price = medPrice
+    ? {
+        first: withCoaching
+          ? medPrice.first + COACHING_MONTHLY - BUNDLE_DISCOUNT
+          : medPrice.first,
+        monthly: withCoaching
+          ? medPrice.monthly + COACHING_MONTHLY - BUNDLE_DISCOUNT
+          : medPrice.monthly,
+      }
     : null;
 
   function handleSubmit(e: React.FormEvent) {
@@ -66,10 +80,34 @@ export default function CheckoutPage() {
               <div className="flex justify-between">
                 <div>
                   <p className="font-medium">{medName}</p>
-                  <p className="text-sm text-gray-500">{formName} · {medication?.dosage}</p>
+                  <p className="text-sm text-gray-500">
+                    {formName} · {medication?.dosage}
+                  </p>
                 </div>
-                <p className="font-semibold">${price?.first}</p>
+                <p className="font-semibold">${medPrice?.first}</p>
               </div>
+
+              {withCoaching && (
+                <>
+                  <div className="flex justify-between">
+                    <div>
+                      <p className="font-medium">Future Coaching</p>
+                      <p className="text-sm text-gray-500">
+                        Resistance training + nutrition
+                      </p>
+                    </div>
+                    <p className="font-semibold">${COACHING_MONTHLY}</p>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-sage font-medium">
+                      Bundle discount
+                    </span>
+                    <span className="text-sage font-semibold">
+                      -${BUNDLE_DISCOUNT}
+                    </span>
+                  </div>
+                </>
+              )}
 
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Provider consultation</span>

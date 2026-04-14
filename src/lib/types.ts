@@ -60,6 +60,9 @@ export interface MedicationSelection {
   type: "semaglutide" | "tirzepatide";
   form: "injection" | "oral";
   dosage: string;
+  // When true, adds Future coaching to the monthly subscription
+  // with a $49/mo bundle discount applied.
+  withCoaching?: boolean;
 }
 
 export interface PharmacySelection {
