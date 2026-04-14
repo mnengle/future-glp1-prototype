@@ -131,11 +131,11 @@ export default function PricingPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
               Transparent Pricing
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05] max-w-3xl mx-auto">
               One monthly price.
               <br />
               <span className="future-gradient-text">
@@ -401,9 +401,9 @@ export default function PricingPage() {
 
         {/* Comparison table */}
         <section className="bg-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight">
                 How we compare
               </h2>
               <p className="text-gray-500 mt-3 text-lg">
@@ -527,7 +527,7 @@ export default function PricingPage() {
         {/* FAQs */}
         <section className="bg-warm-gray">
           <div className="max-w-3xl mx-auto px-4 md:px-[60px] py-20 md:py-28">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
               Pricing FAQs
             </h2>
 

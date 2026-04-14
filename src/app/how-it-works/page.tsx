@@ -73,12 +73,12 @@ export default function HowItWorksPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
                 How It Works
               </p>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+              <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]">
                 From signup to
                 <br />
                 <span className="future-gradient-text">
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
 
         {/* Interactive timeline */}
         <section className="bg-warm-gray">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             {/* Tab nav */}
             <div className="flex flex-wrap gap-2 justify-center mb-10">
               {TIMELINE_STEPS.map((step, i) => {
@@ -148,7 +148,7 @@ export default function HowItWorksPage() {
                 <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
                   Step {activeStep + 1} of {TIMELINE_STEPS.length}
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-3 leading-tight">
+                <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight mt-3 leading-tight">
                   {TIMELINE_STEPS[activeStep].title}
                 </h2>
                 <p className="text-gray-500 mt-4 text-base leading-relaxed">
@@ -209,7 +209,7 @@ export default function HowItWorksPage() {
         {/* FAQs */}
         <section className="bg-warm-gray">
           <div className="max-w-3xl mx-auto px-4 md:px-[60px] py-20 md:py-28">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
               Frequently asked questions
             </h2>
 
