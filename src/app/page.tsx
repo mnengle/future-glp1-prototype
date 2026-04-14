@@ -108,8 +108,8 @@ export default function Home() {
       <JsonLd data={organizationSchema} />
       <Nav />
       <main id="main-content" className="flex-1">
-        {/* Hero */}
-        <section className="relative bg-black text-white overflow-hidden min-h-[80vh] flex items-center">
+        {/* Hero — sized so CTA sits above the fold on 13-16" laptops + mobile */}
+        <section className="relative bg-black text-white overflow-hidden flex items-center min-h-[calc(100vh-4rem)]">
           <div className="absolute inset-0">
             <img
               src="https://res.cloudinary.com/future-web3/image/fetch/c_limit,w_1600/f_auto/q_85/v1/https://future.co/images/pro-homepage/hero/pro-hero-desktop.jpg"
@@ -126,34 +126,32 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
           </div>
 
-          <div className="relative w-full max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-32">
+          <div className="relative w-full max-w-[1440px] mx-auto px-5 md:px-[60px] py-10 md:py-16 lg:py-20">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-white/70 mb-6">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-white/70 mb-4">
                 Medical Weight Loss + Coaching
               </p>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95]">
                 Lose the fat.
                 <br />
-                Keep the
-                <br />
+                Keep the{" "}
                 <span className="future-gradient-text">muscle.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/80 mt-10 max-w-xl leading-relaxed">
+              <p className="text-lg md:text-xl text-white/80 mt-5 md:mt-6 max-w-xl leading-relaxed">
                 Clinically proven GLP-1 medications, paired with expert coaching
-                and resistance training. Because medication alone isn&apos;t
-                enough.
+                and resistance training. Medication alone isn&apos;t enough.
               </p>
 
-              <div className="mt-10">
-                <p className="text-sm font-medium text-white/60 mb-4">
+              <div className="mt-6">
+                <p className="text-xs sm:text-sm font-medium text-white/60 mb-3">
                   How much weight do you want to lose?
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 max-w-2xl">
                   {goals.map((goal) => (
                     <Link
                       key={goal.value}
                       href={`/assessment?goal=${goal.value}`}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-center text-sm font-medium hover:bg-white/20 transition-colors"
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2.5 text-center text-sm font-medium hover:bg-white/20 transition-colors"
                     >
                       {goal.label}
                     </Link>
@@ -161,12 +159,17 @@ export default function Home() {
                 </div>
               </div>
 
-              <Link
-                href="/assessment"
-                className="inline-block mt-8 bg-white text-black text-base font-semibold px-10 py-4 rounded-lg hover:opacity-80 transition-opacity"
-              >
-                Start Your Assessment
-              </Link>
+              <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
+                <Link
+                  href="/assessment"
+                  className="inline-block bg-white text-black text-base font-semibold px-8 py-3.5 rounded-lg hover:opacity-80 transition-opacity text-center"
+                >
+                  Start Your Assessment
+                </Link>
+                <p className="text-xs text-white/60">
+                  5 minutes · You&apos;re only charged if approved
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -224,58 +227,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* The muscle problem */}
+        {/* The muscle problem transition */}
         <section className="bg-warm-gray">
           <div className="max-w-[1440px] mx-auto px-5 md:px-[60px] py-20 md:py-28">
-            <div className="max-w-3xl mx-auto">
-              <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4 text-center">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-5">
                 The Problem Nobody Talks About
               </p>
-              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight leading-tight">
                 GLP-1 medications work. But there&apos;s a catch.
               </h2>
-              <p className="text-gray-500 text-center mt-4 text-lg max-w-2xl mx-auto leading-relaxed">
-                Clinical trials show that 25 to 40% of weight lost on
-                semaglutide and tirzepatide is lean body mass, not fat. That
-                includes muscle, bone density, and metabolic capacity. Without
-                intervention, you lose the weight but weaken the body
-                underneath.
+              <p className="text-gray-500 mt-5 text-lg max-w-2xl mx-auto leading-relaxed">
+                A large share of the weight you lose on a GLP-1 isn&apos;t fat.
+                It&apos;s muscle, bone density, and metabolic capacity. Without
+                the right training and protein intake, you lose the weight but
+                weaken the body underneath.
               </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
-                  <p className="text-3xl font-bold text-hot-pink">~39%</p>
-                  <p className="text-sm font-semibold mt-2">
-                    Lean mass as a share of total weight lost
-                  </p>
-                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    In the STEP 1 body composition substudy, about 39% of total
-                    weight lost on semaglutide 2.4mg came from lean body mass,
-                    not fat.
-                  </p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
-                  <p className="text-3xl font-bold text-hot-pink">2/3</p>
-                  <p className="text-sm font-semibold mt-2">
-                    Weight regained within 1 year of stopping
-                  </p>
-                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    The STEP 1 extension found participants regained two-thirds
-                    of lost weight after stopping semaglutide, and the regained
-                    weight tends to come back as fat, not muscle.
-                  </p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 border border-gray-200/60">
-                  <p className="text-3xl font-bold text-sage">Preventable</p>
-                  <p className="text-sm font-semibold mt-2">
-                    With resistance training and protein
-                  </p>
-                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    Emerging research suggests resistance training combined
-                    with adequate protein intake can dramatically reduce muscle
-                    loss during GLP-1 treatment.
-                  </p>
-                </div>
+              <div className="mt-10 inline-flex items-center gap-2 bg-white border border-gray-200/60 rounded-full px-5 py-2.5">
+                <span className="w-2 h-2 rounded-full bg-sage" />
+                <span className="text-sm font-medium text-gray-700">
+                  That&apos;s why Future pairs medication with coaching.
+                </span>
               </div>
             </div>
           </div>
@@ -560,38 +532,38 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4 text-center">
                 The Future Difference
               </p>
-              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight text-center leading-tight">
                 Build muscle while you lose weight.
               </h2>
-              <p className="text-lg text-white/75 mt-4 leading-relaxed text-center max-w-2xl mx-auto">
-                Leading medical organizations recommend combining resistance
-                training with obesity pharmacotherapy to preserve lean mass.
-                Your Future coach makes sure it actually happens.
+              <p className="text-lg text-white/75 mt-5 leading-relaxed text-center max-w-2xl mx-auto">
+                Every Future member gets a dedicated coach who builds the
+                training, nutrition, and accountability around your medication.
+                Three pillars, one program.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="font-bold text-lg">Resistance training</h3>
+                  <h3 className="font-bold text-lg">A strength program</h3>
                   <p className="text-sm text-white/70 mt-2 leading-relaxed">
-                    Personalized strength programs designed to preserve and
-                    build lean mass during weight loss. Adapted weekly based on
-                    your progress and energy levels.
+                    A personalized lifting plan that protects muscle while you
+                    lose fat. Your coach adjusts it weekly based on how you
+                    feel on the medication.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="font-bold text-lg">Protein optimization</h3>
+                  <h3 className="font-bold text-lg">A protein plan</h3>
                   <p className="text-sm text-white/70 mt-2 leading-relaxed">
-                    Research supports 1.2 to 2.0 g/kg/day protein intake during
-                    active weight loss with resistance training. Your coach
-                    dials in your macros.
+                    Daily targets in the research-backed 1.2 to 2.0 g/kg range,
+                    with simple meals that hit them even when your appetite is
+                    low.
                   </p>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <h3 className="font-bold text-lg">Lasting results</h3>
+                  <h3 className="font-bold text-lg">Results that stick</h3>
                   <p className="text-sm text-white/70 mt-2 leading-relaxed">
-                    A Lancet-family RCT of exercise combined with liraglutide
-                    maintained weight loss one year after stopping medication,
-                    unlike pharmacotherapy alone.
+                    Habits strong enough to hold when you step off medication.
+                    Trials show exercise plus GLP-1 maintains weight loss a
+                    year after stopping, unlike medication alone.
                   </p>
                 </div>
               </div>
