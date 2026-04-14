@@ -81,8 +81,8 @@ const members = [
     program: "Tirzepatide + Coaching",
     quote:
       "I've done GLP-1s before and always felt weak after. This time I came out stronger than I started.",
-    beforeImg: "/testimonials/before-2.jpg",
-    afterImg: "/testimonials/after-2.jpg",
+    beforeImg: "/testimonials/sarah-before.png",
+    afterImg: "/testimonials/sarah-after.png",
   },
   {
     initial: "M",
@@ -96,8 +96,8 @@ const members = [
     program: "Tirzepatide + Coaching",
     quote:
       "The med killed my appetite. Coaching kept me eating enough protein. Biggest difference of my life.",
-    beforeImg: "/testimonials/before-3.jpg",
-    afterImg: "/testimonials/after-3.jpg",
+    beforeImg: "/testimonials/marcus-before.png",
+    afterImg: "/testimonials/marcus-after.png",
   },
 ];
 
