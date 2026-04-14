@@ -131,7 +131,7 @@ export default function PricingPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
-          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28 text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
               Transparent Pricing
             </p>
@@ -401,7 +401,7 @@ export default function PricingPage() {
 
         {/* Comparison table */}
         <section className="bg-white">
-          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold tracking-tight">
                 How we compare

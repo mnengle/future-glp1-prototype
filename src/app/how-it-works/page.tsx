@@ -73,7 +73,7 @@ export default function HowItWorksPage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-black text-white">
-          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-4">
                 How It Works
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
 
         {/* Interactive timeline */}
         <section className="bg-warm-gray">
-          <div className="max-w-[1600px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-[60px] py-20 md:py-28">
             {/* Tab nav */}
             <div className="flex flex-wrap gap-2 justify-center mb-10">
               {TIMELINE_STEPS.map((step, i) => {
