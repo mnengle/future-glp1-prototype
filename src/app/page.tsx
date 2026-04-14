@@ -308,7 +308,7 @@ export default function Home() {
                       <img
                         src={member.beforeImg}
                         alt={`${member.name} before`}
-                        className="w-full h-full object-cover grayscale-[20%]"
+                        className="w-full h-full object-contain bg-white"
                       />
                       <span className="absolute top-2 left-2 bg-black/70 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
                         Before
@@ -318,7 +318,7 @@ export default function Home() {
                       <img
                         src={member.afterImg}
                         alt={`${member.name} after`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-white"
                       />
                       <span className="absolute top-2 left-2 bg-sage text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
                         After
